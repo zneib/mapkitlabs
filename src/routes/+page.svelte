@@ -1,5 +1,5 @@
 <script>
-  import { page } from '$app/stores';
+  import { PUBLIC_MAP_TOKEN } from '$env/static/public';
   import { onMount } from 'svelte';
 
   onMount(async () => {
