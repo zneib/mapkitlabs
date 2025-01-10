@@ -26,3 +26,20 @@
 
 <div id="mapContainer">
 </div>
+
+<style>
+  :global(root, body, *) {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  :global(body) {
+    margin: 0px;
+    padding: 0px;
+  }
+  #mapContainer {
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    position: relative;
+  }
+</style>
