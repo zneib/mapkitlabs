@@ -22,9 +22,30 @@
       showsScale: true,
     });
   });
+
+  function addAnnotation() {
+    if (map && mapkitGlobal) {
+      const activeAnnotation = map.selectedAnnotation;
+      if (activeAnnotation) {
+        map.removeAnnotation(activeAnnotation);
+      } else {
+        const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(37.334883, -122.008977), {
+          title: "Apple Park",
+          subtitle: "Cupertino, CA",
+          color: "#ff0000",
+          selected: true
+        });
+        map.addAnnotation(annotation);
+      }
+    }
+  }
 </script>
 
 <div id="mapContainer">
+  <button class="menu-btn" onclick={addAnnotation} style:top="60px">
+    <img src={marker} alt="marker" />
+    <span>Annotations</span>
+  </button>
 </div>
 
 <style>
@@ -57,5 +78,15 @@
     span {
       padding-left: 5px;
     }
+  }
+  ::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .popover:popover-open {
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    margin: 0
   }
 </style>
