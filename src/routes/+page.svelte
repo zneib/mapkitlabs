@@ -1,12 +1,12 @@
 <script>
-  import { PUBLIC_MAP_TOKEN } from '$env/static/public';
+  import { MAP_TOKEN } from '$env/static/private';
   import { onMount } from 'svelte';
 
   onMount(async () => {
     await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
 		mapkit.init({
 			authorizationCallback: function(done) {
-					done(PUBLIC_MAP_TOKEN);
+					done(MAP_TOKEN);
 			},
 			language: "en"
 		});
