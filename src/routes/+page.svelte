@@ -1,6 +1,7 @@
 <script>
   import { PUBLIC_MAP_TOKEN } from '$env/static/public';
   import { onMount } from 'svelte';
+  import marker from '$lib/icons/marker.svg'
 
   // Global variables to hold the map and mapkit objects
   let map;
