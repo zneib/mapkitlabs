@@ -16,7 +16,8 @@
 			language: "en"
 		});
 
-    const map = new mapkit.Map('mapContainer', { 
+    mapkitGlobal = mapkit
+    map = new mapkit.Map('mapContainer', { 
       center: new mapkit.Coordinate(37.334883, -122.008977),
       colorScheme: 'adaptive',
       showsMapTypeControl: true,
