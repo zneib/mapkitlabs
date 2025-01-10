@@ -42,4 +42,20 @@
     height: 100svh;
     position: relative;
   }
+  .menu-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    border: 2px solid var(--blue-ten);
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    span {
+      padding-left: 5px;
+    }
+  }
 </style>
