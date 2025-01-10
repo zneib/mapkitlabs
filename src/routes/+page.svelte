@@ -2,6 +2,10 @@
   import { PUBLIC_MAP_TOKEN } from '$env/static/public';
   import { onMount } from 'svelte';
 
+  // Global variables to hold the map and mapkit objects
+  let map;
+  let mapkitGlobal;
+
   onMount(async () => {
     await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
 		mapkit.init({
