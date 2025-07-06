@@ -3,16 +3,16 @@
   import marker from '$lib/icons/marker.svg'
 
   let markerAnnotationTitle = $state('');
-  let markerAnnotationSubtitle = $state('');
-  let markerAnnotationColor = $state('');
+  let markerAnnotationSubtitle = $state('Cupertino, CA');
+  let markerAnnotationColor = $state('30b567');
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
       map.removeAnnotation(map.selectedAnnotation);
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(37.334883, -122.008977), {
-        title: markerAnnotationTitle || "Apple Park",
-        subtitle: markerAnnotationSubtitle || "Cupertino, CA",
-        color: markerAnnotationColor || "#ff0000",
+        title: markerAnnotationTitle,
+        subtitle: markerAnnotationSubtitle,
+        color: markerAnnotationColor,
         selected: true
       });
       map.addAnnotation(annotation);
