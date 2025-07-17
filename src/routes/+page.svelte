@@ -6,6 +6,7 @@
   import ImageAnnotation from '$lib/ImageAnnotation/ImageAnnotation.svelte';
 	import AccessoryViews from '$lib/AccessoryViews/AccessoryViews.svelte';
 	import MarkerAnnotation from '$lib/MarkerAnnotation/MarkerAnnotation.svelte';
+  import CircleOverlay from '$lib/CircleOverlay/CircleOverlay.svelte';
 
   // Global variables to hold the map and mapkit objects
   let map;
@@ -42,6 +43,7 @@
   <MarkerAnnotation map={map} mapkitGlobal={mapkitGlobal} />
   <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
   <ImageAnnotation map={map} mapkitGlobal={mapkitGlobal} />
+  <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <!-- <div popover id="custom-popover" class="popover">
     <p>A lot of code isn't needed to add a custom annotation. See the sample code <a href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank">here</a></p>
     <button class="toggle" onclick={addAnnotation}>Toggle Custom Annotation</button>
