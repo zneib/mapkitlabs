@@ -4,6 +4,12 @@
 
   function addCircleOverlay() {
     if (map && mapkitGlobal) {
+      // console.log(map._impl._overlaysController)      
+      if (map?._impl?._overlaysController?._items.length > 0) {
+        map.removeOverlays(map?._impl?._overlaysController?._items);
+      }
+    }
+    if (map && mapkitGlobal) {
       const stats = [
         { name: "San Francisco", coordinate: [37.783333, -122.416667], population: 852469 },
         { name: "Oakland", coordinate: [37.804444, -122.270833], population: 390724 },
@@ -12,7 +18,7 @@
 
 
       const style = new mapkit.Style({
-        lineWidth: 4,         // 2 CSS pixels.
+        lineWidth: 4, // 2 CSS pixels.
         strokeColor: "#816a8c",
         fillColor: "#816a8c"
       });
