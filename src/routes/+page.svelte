@@ -90,65 +90,7 @@
     height: 100svh;
     position: relative;
   }
-  .menu-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    border: 2px solid var(--blue-ten);
-    border-radius: 5px;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    span {
-      padding-left: 5px;
-    }
-  }
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
   }
-
-  .toggle {
-    background-color: var(--blue-ten);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    width: fit-content;
-  }
-
-  .popover:popover-open {
-    position: absolute;
-    top: 50px;
-    left: 200px;
-    margin: 0;
-    border-radius: 8px;
-    padding: 10px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(255,255,255,0.75);
-  }
-  div.annotation-input {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-  }
-  label {
-    font-size: 1rem;
-    padding-right: 10px;
-  }
-  input.annotation-input {
-    width: 400px;
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid var(--gray-six);
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-
 </style>
