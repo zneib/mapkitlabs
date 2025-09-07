@@ -21,16 +21,14 @@
       annotationAdded = true;
     }
   }
-  function removeCustomAnnotation() {
+  function removeCustomMarkerAnnotation() {
     if (map && mapkitGlobal) {
-      console.log(map.selectedAnnotation);
       map.removeAnnotation(map.selectedAnnotation);
       annotationAdded = false;
     }
   }
   function resetAnnotationWithNewData() {
     if (map && mapkitGlobal) {
-      console.log(map)
       map.removeAnnotations(map._impl._annotationsController._items); // Remove all annotations
       // map.removeAnnotation(map.selectedAnnotation); // Only remove the selected annotation, which won't work if the annotation isn't selected
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(37.334883, -122.008977), {
@@ -74,7 +72,7 @@
   </div>
   <div class="button-row">
     <button class="toggle" onclick={removeAllAnnotations}>Remove All Annotations</button>
-    <button class="toggle" onclick={annotationAdded ? removeCustomAnnotation : addAnnotation}>Toggle Custom Annotation</button>
+    <button class="toggle" onclick={annotationAdded ? removeCustomMarkerAnnotation : addAnnotation}>Toggle Custom Annotation</button>
   </div>
 </div>
 
