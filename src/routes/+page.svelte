@@ -37,31 +37,11 @@
 </script>
 
 <div id="mapContainer">
-  <!-- <button class="menu-btn" popovertarget="custom-popover" popovertargetaction="toggle" style:top="60px">
-    <img src={marker} alt="marker" />
-    <span>Marker Annotation</span>
-  </button> -->
   <MarkerAnnotation map={map} mapkitGlobal={mapkitGlobal} />
   <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
   <ImageAnnotation map={map} mapkitGlobal={mapkitGlobal} />
   <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} />
-  <!-- <div popover id="custom-popover" class="popover">
-    <p>A lot of code isn't needed to add a custom annotation. See the sample code <a href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank">here</a></p>
-    <button class="toggle" onclick={addAnnotation}>Toggle Custom Annotation</button>
-    <div class="annotation-input">
-      <label for="markerAnnotationTitle">Marker Annotation Title</label>
-      <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a title for the marker annotation" onblur={addAnnotation} />
-    </div>
-    <div class="annotation-input">
-      <label for="markerAnnotationSub">Marker Annotation Subtitle</label>
-      <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a sub title for the marker annotation" onblur={addAnnotation} />
-    </div>
-    <div class="annotation-input">
-      <label for="markerAnnotationColor">Marker Annotation Color</label>
-      <input bind:value={markerAnnotationColor} class="annotation-input" type="color" name="markerAnnotationColor" id="markerAnnotationColor" placeholder="Enter a color for the marker annotation" onblur={addAnnotation} />
-    </div>
-  </div> -->
 </div>
 
 <style>

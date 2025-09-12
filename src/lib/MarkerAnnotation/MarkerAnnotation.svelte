@@ -53,12 +53,15 @@
   <span>Marker Annotation Options</span>
 </button>
 <div popover id="custom-popover" class="popover">
-  <h2>Annotation Options</h2>
-  <a class="code-link" href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank" aria-label="Code Sample">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-    </svg>
-  </a>
+  <div class="top-row">
+    <h2>Annotation Options</h2>
+    <a class="code-link" href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank" aria-label="Code Sample">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+      </svg>
+    </a>
+    <button class="close-btn">&times;</button>
+  </div>
   <div class="annotation-input">
     <label for="markerAnnotationTitle">Title</label>
     <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a title for the marker annotation" onblur={resetAnnotationWithNewData} />
@@ -79,7 +82,6 @@
     <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
     <button class="custom-btn" onclick={annotationAdded ? removeCustomMarkerAnnotation : addAnnotation}>Toggle Custom Annotation</button>
   </div>
-  <button class="close-btn">&times;</button>
 </div>
 
 <style>
@@ -127,7 +129,7 @@
     margin: 0;
     border-radius: 4px;
     border: none;
-    padding: 10px 25px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,12 +154,8 @@
     font-size: 1rem;
   }
   .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
     background-color: transparent;
     border: none;
-    padding: 5px 10px;
     font-size: 1.2rem;
     cursor: pointer;
     display: flex;
@@ -174,9 +172,16 @@
     align-items: center;
     font-size: 0.6rem;
     text-transform: uppercase;
-    position: absolute;
-    top: 10px;
-    left: 20px;
     color: var(--gray-one);
+    margin-left: auto;
+  }
+  .top-row {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    gap: 10px;
+    h2 {
+      margin-top: 0;
+    }
   }
 </style>
