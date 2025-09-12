@@ -7,6 +7,7 @@
   let markerAnnotationSubtitle = $state('');
   let markerAnnotationColor = $state('30b567');
   let markerAnnotationSelected = $state(true);
+  let markerAnnotationDraggable = $state(true);
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
@@ -15,7 +16,8 @@
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
-        selected: markerAnnotationSelected
+        selected: markerAnnotationSelected,
+        draggable: markerAnnotationDraggable
       });
       map.addAnnotation(annotation);
       annotationAdded = true;
@@ -35,7 +37,8 @@
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
-        selected: markerAnnotationSelected
+        selected: markerAnnotationSelected,
+        draggable: markerAnnotationDraggable
       });
       map.addAnnotation(annotation);
     }
@@ -62,21 +65,31 @@
     </a>
     <button class="close-btn">&times;</button>
   </div>
-  <div class="annotation-input">
-    <label for="markerAnnotationTitle">Title</label>
-    <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a title for the marker annotation" onblur={resetAnnotationWithNewData} />
-  </div>
-  <div class="annotation-input">
-    <label for="markerAnnotationSub">Subtitle</label>
-    <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a sub title for the marker annotation" onblur={resetAnnotationWithNewData} />
-  </div>
-  <div class="annotation-input">
-    <label for="markerAnnotationColor">Color</label>
-    <input bind:value={markerAnnotationColor} class="annotation-input" type="color" name="markerAnnotationColor" id="markerAnnotationColor" placeholder="Enter a color for the marker annotation" onblur={resetAnnotationWithNewData} />
-  </div>
-  <div class="annotation-input">
-    <label for="markerAnnotationSelected">Selected</label>
-    <input bind:checked={markerAnnotationSelected} class="annotation-input" type="checkbox" name="markerAnnotationSelected" id="markerAnnotationSelected" onchange={resetAnnotationWithNewData} />
+  <div class="section-wrapper">
+    <aside class="option-section">
+      <div>
+        <label for="markerAnnotationTitle">Title</label>
+        <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a Title" onblur={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationSub">Subtitle</label>
+        <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
+      </div>
+    </aside>
+    <aside class="option-section">
+      <div>
+        <label for="markerAnnotationSelected">Selected</label>
+        <input bind:checked={markerAnnotationSelected} class="annotation-input-small" type="checkbox" name="markerAnnotationSelected" id="markerAnnotationSelected" onchange={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationDraggable">Draggable</label>
+        <input bind:checked={markerAnnotationDraggable} class="annotation-input-small" type="checkbox" name="markerAnnotationDraggable" id="markerAnnotationDraggable" onchange={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationColor">Color</label>
+        <input bind:value={markerAnnotationColor} style="border: none; padding: 0; width: 30px; height: 20px" class="annotation-input-small" type="color" name="markerAnnotationColor" id="markerAnnotationColor" placeholder="Enter a color for the marker annotation" onblur={resetAnnotationWithNewData} />
+      </div>
+    </aside>
   </div>
   <div class="button-row">
     <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
@@ -121,7 +134,15 @@
     margin-top: 10px;
     text-transform: uppercase;
   }
-
+  .section-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+  .option-section {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
   .popover:popover-open {
     position: absolute;
     top: 100px;
@@ -135,22 +156,22 @@
     align-items: center;
     background-color: rgba(255,255,255,1);
   }
-  div.annotation-input {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-  }
   label {
     font-size: 0.9rem;
     padding-right: 10px;
   }
-  input.annotation-input {
-    width: 400px;
+  .annotation-input {
+    width: 200px;
     padding: 5px;
     margin-top: 5px;
     border: 1px solid var(--gray-six);
     border-radius: 4px;
+    font-size: 1rem;
+  }
+  .annotation-input-small {
+    width: 100px;
+    padding: 5px;
+    margin-top: 5px;
     font-size: 1rem;
   }
   .close-btn {
@@ -161,10 +182,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .close-btn:hover {
-    background-color: var(--gray-eight);
-    border-radius: 50%;
   }
   .code-link {
     display: flex;
