@@ -53,7 +53,12 @@
   <span>Marker Annotation Options</span>
 </button>
 <div popover id="custom-popover" class="popover">
-  <p>See the sample code <a href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank">here</a></p>
+  <h2>Annotation Options</h2>
+  <a class="code-link" href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank" aria-label="Code Sample">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+    </svg>
+  </a>
   <div class="annotation-input">
     <label for="markerAnnotationTitle">Title</label>
     <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a title for the marker annotation" onblur={resetAnnotationWithNewData} />
@@ -71,9 +76,10 @@
     <input bind:checked={markerAnnotationSelected} class="annotation-input" type="checkbox" name="markerAnnotationSelected" id="markerAnnotationSelected" onchange={resetAnnotationWithNewData} />
   </div>
   <div class="button-row">
-    <button class="toggle" onclick={removeAllAnnotations}>Remove All Annotations</button>
-    <button class="toggle" onclick={annotationAdded ? removeCustomMarkerAnnotation : addAnnotation}>Toggle Custom Annotation</button>
+    <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
+    <button class="custom-btn" onclick={annotationAdded ? removeCustomMarkerAnnotation : addAnnotation}>Toggle Custom Annotation</button>
   </div>
+  <button class="close-btn">&times;</button>
 </div>
 
 <style>
@@ -102,12 +108,12 @@
     width: 100%;
     margin-top: 10px;
   }
-  .toggle {
+  .custom-btn {
     background-color: transparent;
     color: var(--gray-one);
     border: 1px solid var(--gray-one);
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 10px;
     cursor: pointer;
     width: fit-content;
     margin-top: 10px;
@@ -119,7 +125,8 @@
     top: 100px;
     left: 10px;
     margin: 0;
-    border-radius: 8px;
+    border-radius: 4px;
+    border: none;
     padding: 10px 25px;
     display: flex;
     flex-direction: column;
@@ -133,7 +140,7 @@
     justify-content: end;
   }
   label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding-right: 10px;
   }
   input.annotation-input {
@@ -143,5 +150,33 @@
     border: 1px solid var(--gray-six);
     border-radius: 4px;
     font-size: 1rem;
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .close-btn:hover {
+    background-color: var(--gray-eight);
+    border-radius: 50%;
+  }
+  .code-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: var(--gray-one);
   }
 </style>
