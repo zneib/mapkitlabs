@@ -5,7 +5,7 @@
   let annotationAdded = $state(false);
   let markerAnnotationTitle = $state('');
   let markerAnnotationSubtitle = $state('');
-  let markerAnnotationColor = $state('30b567');
+  let markerAnnotationColor = ('30b567');
   let markerAnnotationSelected = $state(true);
   let markerAnnotationDraggable = $state(true);
 
@@ -49,6 +49,11 @@
       annotationAdded = false;
     }
   }
+  function setAnnotationColor(color) {
+    console.log(color)
+    markerAnnotationColor = color;
+    resetAnnotationWithNewData();
+  }
 </script>
 
 <button class="menu-btn" popovertarget="custom-popover" popovertargetaction="toggle" style:top="60px">
@@ -75,6 +80,16 @@
         <label for="markerAnnotationSub">Subtitle</label>
         <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
       </div>
+      <div>
+        <label for="markerAnnotationColor">Color</label>
+        <button onclick={setAnnotationColor('#044E54')} aria-label="CyanOne" class="annotation-input color-btn" style:background-color="#044E54"></button>
+        <button onclick={setAnnotationColor('#0A6C74')} aria-label="CyanTwo" class="annotation-input color-btn" style:background-color="#0A6C74"></button>
+        <button onclick={setAnnotationColor('#0E7C86')} aria-label="CyanThree" class="annotation-input color-btn" style:background-color="#0E7C86"></button>
+        <button onclick={setAnnotationColor('#14919B')} aria-label="CyanFour" class="annotation-input color-btn" style:background-color="#14919B"></button>
+        <button onclick={setAnnotationColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
+        <button onclick={setAnnotationColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
+        <!-- <input bind:value={markerAnnotationColor} style="border: none; padding: 0; width: 30px; height: 20px" class="annotation-input-small" type="color" name="markerAnnotationColor" id="markerAnnotationColor" placeholder="Enter a color for the marker annotation" onblur={resetAnnotationWithNewData} /> -->
+      </div>
     </aside>
     <aside class="option-section">
       <div>
@@ -84,10 +99,6 @@
       <div>
         <label for="markerAnnotationDraggable">Draggable</label>
         <input bind:checked={markerAnnotationDraggable} class="annotation-input-small" type="checkbox" name="markerAnnotationDraggable" id="markerAnnotationDraggable" onchange={resetAnnotationWithNewData} />
-      </div>
-      <div>
-        <label for="markerAnnotationColor">Color</label>
-        <input bind:value={markerAnnotationColor} style="border: none; padding: 0; width: 30px; height: 20px" class="annotation-input-small" type="color" name="markerAnnotationColor" id="markerAnnotationColor" placeholder="Enter a color for the marker annotation" onblur={resetAnnotationWithNewData} />
       </div>
     </aside>
   </div>
@@ -120,6 +131,7 @@
   .button-row {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
     width: 100%;
     margin-top: 10px;
   }
@@ -137,6 +149,7 @@
   .section-wrapper {
     display: flex;
     gap: 20px;
+    width: 100%;
   }
   .option-section {
     display: flex;
@@ -157,8 +170,8 @@
     background-color: rgba(255,255,255,1);
   }
   label {
-    font-size: 0.9rem;
-    padding-right: 10px;
+    font-size: 0.8rem;
+    padding-right: 2px;
   }
   .annotation-input {
     width: 200px;
@@ -166,18 +179,17 @@
     margin-top: 5px;
     border: 1px solid var(--gray-six);
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .annotation-input-small {
-    width: 100px;
     padding: 5px;
     margin-top: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .close-btn {
     background-color: transparent;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -200,5 +212,11 @@
     h2 {
       margin-top: 0;
     }
+  }
+  .color-btn {
+    width: 29px;
+    height: 20px;
+    border: none;
+    border-radius: 2px;
   }
 </style>
