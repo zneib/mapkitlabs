@@ -1,6 +1,6 @@
 <script>
   let { map, mapkitGlobal } = $props();
-  import accessory from '$lib/icons/accessory.svg'
+  import image from '$lib/icons/image.svg'
   import arches from '$lib/ImageAnnotation/arches.jpg'
   import arches2x from '$lib/ImageAnnotation/arches2x.jpg'
 
@@ -51,10 +51,14 @@
       map.addAnnotation(annotation);
     }
   }
+  function closePopover() {
+    const popoverId = $state(document.getElementById('image-annotation-popover'));
+    popoverId.hidePopover();
+  }
 </script>
 
 <button class="menu-btn" popovertarget="image-annotation-popover" style:top="160px">
-  <img src={accessory} alt="accessory" />
+  <img src={image} alt="icon" />
   <span>Image Annotation Options</span>
 </button>
 <div popover id="image-annotation-popover" class="popover">
@@ -154,7 +158,7 @@
   }
   .popover:popover-open {
     position: absolute;
-    top: 100px;
+    top: 200px;
     left: 10px;
     margin: 0;
     border-radius: 4px;
@@ -209,10 +213,10 @@
       margin-top: 0;
     }
   }
-  .color-btn {
+  /* .color-btn {
     width: 29px;
     height: 20px;
     border: none;
     border-radius: 2px;
-  }
+  } */
 </style>
