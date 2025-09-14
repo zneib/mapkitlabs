@@ -1,6 +1,6 @@
 <script>
   let { map, mapkitGlobal } = $props();
-  import accessory from '$lib/icons/accessory.svg'
+  import icon from '$lib/icons/polygonOverlay.svg'
 
   let polygonOverlayAdded = $state(false);
 
@@ -51,14 +51,14 @@
 </script>
 
 <button class="menu-btn" onclick={polygonOverlayAdded ? removeAllOverlays : addPolygonOverlay} style:top="260px">
-  <img src={accessory} alt="accessory" />
-  <span>{#if polygonOverlayAdded} Remove Polygon Overlay {:else} Add Polygon Overlay {/if}</span>
+  <img src={icon} alt="polygon overlay" />
+  <span>Polygon Overlay</span>
 </button>
 
-<button class="menu-btn check-btn" onclick={checkOverlaySelection} style:top="310px">
+<!-- <button class="menu-btn check-btn" onclick={checkOverlaySelection} style:top="310px">
   <img src={accessory} alt="accessory" />
   <span>Check Selection</span>
-</button>
+</button> -->
 
 <style>
   .menu-btn {

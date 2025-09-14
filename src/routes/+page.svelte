@@ -38,8 +38,8 @@
 
 <div id="mapContainer">
   <MarkerAnnotation map={map} mapkitGlobal={mapkitGlobal} />
-  <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
   <ImageAnnotation map={map} mapkitGlobal={mapkitGlobal} />
+  <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
   <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} />
 </div>

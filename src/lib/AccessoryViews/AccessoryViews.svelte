@@ -39,9 +39,9 @@
   }
 </script>
 
-<button class="menu-btn" onclick={addAccessoryView} style:top="110px">
+<button class="menu-btn" onclick={addAccessoryView} style:top="160px">
   <img src={accessory} alt="accessory" />
-  <span>Accessory Views</span>
+  <span>Accessory View</span>
 </button>
 
 <style>

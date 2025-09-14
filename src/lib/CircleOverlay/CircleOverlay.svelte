@@ -1,6 +1,6 @@
 <script>
   let { map, mapkitGlobal } = $props();
-  import accessory from '$lib/icons/accessory.svg'
+  import circleOverlay from '$lib/icons/circleOverlay.svg'
 
   function addCircleOverlay() {
     if (map && mapkitGlobal) {
@@ -39,8 +39,8 @@
 </script>
 
 <button class="menu-btn" onclick={addCircleOverlay} style:top="210px">
-  <img src={accessory} alt="accessory" />
-  <span>Circle Overlays</span>
+  <img src={circleOverlay} alt="circle overlay" />
+  <span>Circle Overlay</span>
 </button>
 
 <style>
