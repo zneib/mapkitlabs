@@ -92,7 +92,6 @@
         <button onclick={setAnnotationColor('#14919B')} aria-label="CyanFour" class="annotation-input color-btn" style:background-color="#14919B"></button>
         <button onclick={setAnnotationColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
         <button onclick={setAnnotationColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
-        <!-- <input bind:value={markerAnnotationColor} style="border: none; padding: 0; width: 30px; height: 20px" class="annotation-input-small" type="color" name="markerAnnotationColor" id="markerAnnotationColor" placeholder="Enter a color for the marker annotation" onblur={resetAnnotationWithNewData} /> -->
       </div>
     </aside>
     <aside class="option-section">
