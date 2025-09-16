@@ -9,6 +9,7 @@
   let overlayFillColor = $state("#02fcad");
   let overlayFillOpacity = $state(0.2);
   let overlayFillRule = $state("nonzero");
+  let overlayLineCap = $state("round");
 
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
@@ -26,7 +27,8 @@
           lineDash: [2, 2, 6, 2, 6, 2],
           fillColor: overlayFillColor,
           fillOpacity: overlayFillOpacity,
-          fillRule: overlayFillRule
+          fillRule: overlayFillRule,
+          lineCap: overlayLineCap,
       });
 
       const rectangle = new mapkit.PolygonOverlay(coords, { style: style });
@@ -55,7 +57,7 @@
     }
   }
 
-  function ressetOverlayWithNewData() {
+  function resetOverlayWithNewData() {
     if (map && mapkitGlobal) {
       removeAllOverlays();
       addPolygonOverlay();
@@ -82,17 +84,25 @@
     <aside class="option-section">
       <div>
         <label for="fillColor">Fill Color</label>
-        <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="#000000" onblur={ressetOverlayWithNewData} />
+        <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="#000000" onblur={resetOverlayWithNewData} />
       </div>
       <div>
         <label for="fillOpacity">Fill Opacity</label>
-        <input bind:value={overlayFillOpacity} class="annotation-input" type="number" name="fillOpacity" id="fillOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={ressetOverlayWithNewData} onblur={ressetOverlayWithNewData} />
+        <input bind:value={overlayFillOpacity} class="annotation-input" type="number" name="fillOpacity" id="fillOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
       </div>
       <div>
         <label for="fillRule">Fill Rule</label>
-        <select bind:value={overlayFillRule} class="annotation-input" name="fillRule" id="fillRule" onchange={ressetOverlayWithNewData}>
+        <select bind:value={overlayFillRule} class="annotation-input" name="fillRule" id="fillRule" onchange={resetOverlayWithNewData}>
           <option value="nonzero">Non-Zero</option>
           <option value="evenodd">Even-Odd</option>
+        </select>
+      </div>
+      <div>
+        <label for="lineCap">Line Cap</label>
+        <select bind:value={overlayLineCap} class="annotation-input" name="lineCap" id="lineCap" onchange={resetOverlayWithNewData}>
+          <option value="butt">Butt</option>
+          <option value="round">Round</option>
+          <option value="square">Square</option>
         </select>
       </div>
     </aside>
