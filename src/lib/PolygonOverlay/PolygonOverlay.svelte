@@ -64,6 +64,11 @@
     }
   }
 
+  function closePopover() {
+    const popoverId = $state(document.getElementById('polygon-overlay-popover'));
+    popoverId.hidePopover();
+  }
+
 </script>
 
 <button class="menu-btn" popovertarget="polygon-overlay-popover" onclick={polygonOverlayAdded ? removeAllOverlays : addPolygonOverlay} style:top="260px">
