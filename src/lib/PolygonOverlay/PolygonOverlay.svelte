@@ -11,7 +11,7 @@
   let overlayFillRule = $state("nonzero");
   let overlayLineCap = $state("round");
   let overlayLineDash = $state("");
-
+  let overlayLineJoin = $state("round");
 
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
@@ -25,12 +25,13 @@
           strokeColor: "#02fcad",
           strokeOpacity: .2,
           lineWidth: 2,
-          lineJoin: "round",
+          // lineJoin: "round",
           fillColor: overlayFillColor,
           fillOpacity: overlayFillOpacity,
           fillRule: overlayFillRule,
           lineCap: overlayLineCap,
           // lineDash: overlayLineDash?.length > 0 ? Array.from(overlayLineDash) : []
+          lineJoin: overlayLineJoin
       });
 
       const rectangle = new mapkit.PolygonOverlay(coords, { style: style });
@@ -112,14 +113,18 @@
           <option value="square">Square</option>
         </select>
       </div>
-            <div>
-        <label for="fillOpacity">Fill Opacity</label>
-        <input bind:value={overlayFillOpacity} class="annotation-input" type="number" name="fillOpacity" id="fillOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
-      </div>
       <!-- <div>
         <label for="lineDash">Line Dash</label>
         <input bind:value={overlayLineDash} class="annotation-input" type="text" name="lineDash" id="lineDash" placeholder="[10, 5]" onblur={resetOverlayWithNewData} />
       </div> -->
+      <div>
+        <label for="lineJoin">Line Join</label>
+        <select bind:value={overlayLineJoin} class="annotation-input" name="lineJoin" id="lineJoin" onchange={resetOverlayWithNewData}>
+          <option value="round">Round</option>
+          <option value="bevel">Bevel</option>
+          <option value="miter">Miter</option>
+        </select>
+      </div>
     </aside>
   </div>
   <div class="button-row">
