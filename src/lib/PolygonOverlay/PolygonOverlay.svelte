@@ -10,11 +10,13 @@
   let overlayFillOpacity = $state(0.2);
   let overlayFillRule = $state("nonzero");
   let overlayLineCap = $state("round");
+  let overlayLineDash = $state("");
+
 
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
       const points = [ [41, -109.05], [41, -102.05], [37, -102.05], [37, -109.05] ];
-
+      console.log(overlayLineDash);
       // Map the raw coordinate points to MapKit JS Coordinate objects:
       const coords = points.map(function(point) {
           return new mapkit.Coordinate(point[0], point[1]);
@@ -24,11 +26,11 @@
           strokeOpacity: .2,
           lineWidth: 2,
           lineJoin: "round",
-          lineDash: [2, 2, 6, 2, 6, 2],
           fillColor: overlayFillColor,
           fillOpacity: overlayFillOpacity,
           fillRule: overlayFillRule,
           lineCap: overlayLineCap,
+          // lineDash: overlayLineDash?.length > 0 ? Array.from(overlayLineDash) : []
       });
 
       const rectangle = new mapkit.PolygonOverlay(coords, { style: style });
@@ -110,6 +112,14 @@
           <option value="square">Square</option>
         </select>
       </div>
+            <div>
+        <label for="fillOpacity">Fill Opacity</label>
+        <input bind:value={overlayFillOpacity} class="annotation-input" type="number" name="fillOpacity" id="fillOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
+      </div>
+      <!-- <div>
+        <label for="lineDash">Line Dash</label>
+        <input bind:value={overlayLineDash} class="annotation-input" type="text" name="lineDash" id="lineDash" placeholder="[10, 5]" onblur={resetOverlayWithNewData} />
+      </div> -->
     </aside>
   </div>
   <div class="button-row">
