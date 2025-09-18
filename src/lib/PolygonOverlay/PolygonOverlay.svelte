@@ -6,12 +6,16 @@
 
   let polygonOverlay = null;
 
-  let overlayFillColor = $state("#02fcad");
-  let overlayFillOpacity = $state(0.2);
+  let overlayFillColor = $state("rgb(0, 122, 255)");
+  let overlayFillOpacity = $state(0.1);
   let overlayFillRule = $state("nonzero");
   let overlayLineCap = $state("round");
   let overlayLineDash = $state("");
+  let overlayLineDashOffset = $state(0);
   let overlayLineJoin = $state("round");
+  let overlayLineWidth = $state(1);
+  let overlayStrokeColor = $state("rgb(0, 122, 255)");
+  let overlayStrokeOpacity = $state(1);
 
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
@@ -22,15 +26,16 @@
           return new mapkit.Coordinate(point[0], point[1]);
       });
       const style = new mapkit.Style({
-          strokeColor: "#02fcad",
-          strokeOpacity: .2,
-          lineWidth: 2,
+          strokeColor: overlayStrokeColor,
+          strokeOpacity: overlayStrokeOpacity,
+          lineWidth: overlayLineWidth,
           // lineJoin: "round",
           fillColor: overlayFillColor,
           fillOpacity: overlayFillOpacity,
           fillRule: overlayFillRule,
           lineCap: overlayLineCap,
           // lineDash: overlayLineDash?.length > 0 ? Array.from(overlayLineDash) : []
+          lineDashOffset: overlayLineDashOffset,
           lineJoin: overlayLineJoin
       });
 
@@ -92,7 +97,7 @@
     <aside class="option-section">
       <div>
         <label for="fillColor">Fill Color</label>
-        <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="#000000" onblur={resetOverlayWithNewData} />
+        <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
       </div>
       <div>
         <label for="fillOpacity">Fill Opacity</label>
@@ -118,12 +123,28 @@
         <input bind:value={overlayLineDash} class="annotation-input" type="text" name="lineDash" id="lineDash" placeholder="[10, 5]" onblur={resetOverlayWithNewData} />
       </div> -->
       <div>
+        <label for="lineDashOffset">Line Dash Offset</label>
+        <input bind:value={overlayLineDashOffset} class="annotation-input" type="number" name="lineDashOffset" id="lineDashOffset" placeholder="0" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
+      </div>
+      <div>
         <label for="lineJoin">Line Join</label>
         <select bind:value={overlayLineJoin} class="annotation-input" name="lineJoin" id="lineJoin" onchange={resetOverlayWithNewData}>
           <option value="round">Round</option>
           <option value="bevel">Bevel</option>
           <option value="miter">Miter</option>
         </select>
+      </div>
+      <div>
+        <label for="lineWidth">Line Width</label>
+        <input bind:value={overlayLineWidth} class="annotation-input" type="number" name="lineWidth" id="lineWidth" placeholder="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
+      </div>
+      <div>
+        <label for="strokeColor">Stroke Color</label>
+        <input bind:value={overlayStrokeColor} class="annotation-input" type="text" name="strokeColor" id="strokeColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
+      </div>
+      <div>
+        <label for="strokeOpacity">Stroke Opacity</label>
+        <input bind:value={overlayStrokeOpacity} class="annotation-input" type="number" name="strokeOpacity" id="strokeOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
       </div>
     </aside>
   </div>
