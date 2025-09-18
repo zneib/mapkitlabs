@@ -1,6 +1,7 @@
 <script>
   let { map, mapkitGlobal } = $props();
   import icon from '$lib/icons/polygonOverlay.svg'
+	import MenuButton from '$lib/MenuButton.svelte';
 
   let polygonOverlayAdded = $state(false);
 
@@ -20,7 +21,6 @@
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
       const points = [ [41, -109.05], [41, -102.05], [37, -102.05], [37, -109.05] ];
-      console.log(overlayLineDash);
       // Map the raw coordinate points to MapKit JS Coordinate objects:
       const coords = points.map(function(point) {
           return new mapkit.Coordinate(point[0], point[1]);
@@ -79,10 +79,11 @@
 
 </script>
 
-<button class="menu-btn" popovertarget="polygon-overlay-popover" onclick={polygonOverlayAdded ? removeAllOverlays : addPolygonOverlay} style:top="260px">
+<MenuButton target="polygon-overlay-popover" topValue="260px" text="Polygon Overlay" />
+<!-- <button class="menu-btn" popovertarget="polygon-overlay-popover" style:top="260px">
   <img src={icon} alt="polygon overlay" />
   <span>Polygon Overlay</span>
-</button>
+</button> -->
 <div popover id="polygon-overlay-popover" class="popover">
   <div class="top-row">
     <h2>Overlay Properties</h2>
@@ -160,22 +161,6 @@
 </button> -->
 
 <style>
-  .menu-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    border: 2px solid var(--blue-ten);
-    border-radius: 5px;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    span {
-      padding-left: 5px;
-    }
-  }
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
   }

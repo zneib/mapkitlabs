@@ -1,6 +1,7 @@
 <script>
   let { map, mapkitGlobal } = $props();
   import marker from '$lib/icons/marker.svg'
+	import MenuButton from '$lib/MenuButton.svelte';
 
   let annotationAdded = $state(false);
   let markerAnnotationTitle = $state('');
@@ -60,10 +61,11 @@
   }
 </script>
 
-<button class="menu-btn" popovertarget="custom-popover" popovertargetaction="toggle" style:top="60px">
+<MenuButton target="custom-popover" topValue="60px" text="Marker Annotation" />
+<!-- <button class="menu-btn" popovertarget="custom-popover" popovertargetaction="toggle" style:top="60px">
   <img src={marker} alt="marker" />
   <span>Marker Annotation</span>
-</button>
+</button> -->
 <div popover id="custom-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>
@@ -112,7 +114,7 @@
 </div>
 
 <style>
-  .menu-btn {
+  /* .menu-btn {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -127,7 +129,7 @@
     span {
       padding-left: 5px;
     }
-  }
+  } */
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
   }

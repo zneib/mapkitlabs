@@ -3,6 +3,7 @@
   import image from '$lib/icons/image.svg'
   import arches from '$lib/ImageAnnotation/arches.jpg'
   import arches2x from '$lib/ImageAnnotation/arches2x.jpg'
+  import MenuButton from '$lib/MenuButton.svelte';
 
   let annotationAdded = $state(false);
   let imageAnnotationTitle = $state("Arches National Park");
@@ -57,10 +58,11 @@
   }
 </script>
 
-<button class="menu-btn" popovertarget="image-annotation-popover" style:top="110px">
+<MenuButton target="image-annotation-popover" topValue="110px" text="Image Annotation" />
+<!-- <button class="menu-btn" popovertarget="image-annotation-popover" style:top="110px">
   <img src={image} alt="icon" />
   <span>Image Annotation</span>
-</button>
+</button> -->
 <div popover id="image-annotation-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>
@@ -81,15 +83,6 @@
         <label for="imageAnnotationSub">Subtitle</label>
         <input bind:value={imageAnnotationSubtitle} class="annotation-input" type="text" name="imageAnnotationSubtitle" id="imageAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
       </div>
-      <!-- <div>
-        <label for="markerAnnotationColor">Color</label>
-        <button onclick={setAnnotationColor('#044E54')} aria-label="CyanOne" class="annotation-input color-btn" style:background-color="#044E54"></button>
-        <button onclick={setAnnotationColor('#0A6C74')} aria-label="CyanTwo" class="annotation-input color-btn" style:background-color="#0A6C74"></button>
-        <button onclick={setAnnotationColor('#0E7C86')} aria-label="CyanThree" class="annotation-input color-btn" style:background-color="#0E7C86"></button>
-        <button onclick={setAnnotationColor('#14919B')} aria-label="CyanFour" class="annotation-input color-btn" style:background-color="#14919B"></button>
-        <button onclick={setAnnotationColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
-        <button onclick={setAnnotationColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
-      </div> -->
     </aside>
     <aside class="option-section">
       <div>
@@ -109,22 +102,6 @@
 </div>
 
 <style>
-  .menu-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    border: 2px solid var(--blue-ten);
-    border-radius: 5px;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    span {
-      padding-left: 5px;
-    }
-  }
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
   }
