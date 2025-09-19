@@ -8,6 +8,7 @@
 	import MarkerAnnotation from '$lib/MarkerAnnotation/MarkerAnnotation.svelte';
   import CircleOverlay from '$lib/CircleOverlay/CircleOverlay.svelte';
   import PolygonOverlay from '$lib/PolygonOverlay/PolygonOverlay.svelte';
+  import PolylineOverlay from '$lib/PolylineOverlay/PolylineOverlay.svelte';
 
   // Global variables to hold the map and mapkit objects
   let map;
@@ -42,6 +43,7 @@
   <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
   <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} />
+  <PolylineOverlay map={map} mapkitGlobal={mapkitGlobal} />
 </div>
 
 <style>
