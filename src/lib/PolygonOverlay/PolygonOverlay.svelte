@@ -3,8 +3,6 @@
   import icon from '$lib/icons/polygonOverlay.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
 
-  let polygonOverlayAdded = $state(false);
-
   let polygonOverlay = null;
 
   let overlayFillColor = $state("rgb(0, 122, 255)");
@@ -42,25 +40,13 @@
       const rectangle = new mapkit.PolygonOverlay(coords, { style: style });
       polygonOverlay = rectangle; // Store reference to the overlay
       map.addOverlay(rectangle);
-      polygonOverlayAdded = true;
     }
-  }
-
-  // Function to check if the polygon overlay is currently selected
-  function checkOverlaySelection() {
-    if (map && polygonOverlay) {
-      const isSelected = map.selectedOverlay === polygonOverlay;
-      console.log('Polygon overlay selected:', isSelected);
-      return isSelected;
-    }
-    return false;
   }
 
   function removeAllOverlays() {
     if (map && mapkitGlobal) {   
       if (map?._impl?._overlaysController?._items.length > 0) {
         map.removeOverlays(map?._impl?._overlaysController?._items);
-        polygonOverlayAdded = false;
       }
     }
   }
@@ -80,10 +66,6 @@
 </script>
 
 <MenuButton target="polygon-overlay-popover" topValue="260px" text="Polygon Overlay" />
-<!-- <button class="menu-btn" popovertarget="polygon-overlay-popover" style:top="260px">
-  <img src={icon} alt="polygon overlay" />
-  <span>Polygon Overlay</span>
-</button> -->
 <div popover id="polygon-overlay-popover" class="popover">
   <div class="top-row">
     <h2>Overlay Properties</h2>
@@ -154,11 +136,6 @@
     <button class="custom-btn" onclick={polygonOverlayAdded ? removeCustomPolygonOverlay : addPolygonOverlay}>Toggle Custom Overlay</button>
   </div>
 </div>
-
-<!-- <button class="menu-btn check-btn" onclick={checkOverlaySelection} style:top="310px">
-  <img src={accessory} alt="accessory" />
-  <span>Check Selection</span>
-</button> -->
 
 <style>
   ::backdrop {

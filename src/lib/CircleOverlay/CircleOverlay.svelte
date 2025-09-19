@@ -52,7 +52,6 @@
     if (map && mapkitGlobal) {   
       if (map?._impl?._overlaysController?._items.length > 0) {
         map.removeOverlays(map?._impl?._overlaysController?._items);
-        polygonOverlayAdded = false;
       }
     }
   }
