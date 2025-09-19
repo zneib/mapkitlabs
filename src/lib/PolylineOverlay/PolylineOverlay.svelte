@@ -56,7 +56,7 @@
   }
 
   function closePopover() {
-    const popoverId = $state(document.getElementById('polygon-overlay-popover'));
+    const popoverId = $state(document.getElementById('polyline-overlay-popover'));
     popoverId.hidePopover();
   }
 
