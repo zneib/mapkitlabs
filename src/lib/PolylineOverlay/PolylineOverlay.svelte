@@ -1,6 +1,6 @@
 <script>
   let { map, mapkitGlobal } = $props();
-  import icon from '$lib/icons/polygonOverlay.svg'
+  import icon from '$lib/icons/polyline.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
 
   // let overlayFillColor = $state("rgb(0, 122, 255)"); // These properties are commented out because PolylineOverlay does not use fill properties

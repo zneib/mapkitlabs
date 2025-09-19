@@ -5,6 +5,7 @@
   import accessory from '$lib/icons/accessory.svg'
   import circleOverlay from '$lib/icons/circleOverlay.svg'
   import icon from '$lib/icons/polygonOverlay.svg'
+  import polyline from '$lib/icons/polyline.svg'
 
   let iconSrc = $state('');
 
@@ -23,6 +24,9 @@
       break;
     case 'Polygon Overlay':
       iconSrc = icon;
+      break;
+    case 'Polyline Overlay':
+      iconSrc = polyline;
       break;
     default:
       iconSrc = marker;
