@@ -6,6 +6,8 @@
   // let overlayFillColor = $state("rgb(0, 122, 255)"); // These properties are commented out because PolylineOverlay does not use fill properties
   // let overlayFillOpacity = $state(0.1);
   // let overlayFillRule = $state("nonzero");
+  let polyline = $state(null);
+  let polylineOverlayAdded = $state(false);
   let overlayLineCap = $state("round");
   let overlayLineDash = $state("");
   let overlayLineDashOffset = $state(0);
@@ -35,8 +37,16 @@
           lineJoin: overlayLineJoin
       });
 
-      const polyline = new mapkit.PolylineOverlay(coords, { style: style });
+      polyline = new mapkit.PolylineOverlay(coords, { style: style });
       map.addOverlay(polyline);
+      polylineOverlayAdded = true;
+    }
+  }
+
+  function removeCustomPolylineOverlay() {
+    if (map && mapkitGlobal) {
+      map.removeOverlay(polyline);
+      polylineOverlayAdded = false;
     }
   }
 
@@ -44,6 +54,7 @@
     if (map && mapkitGlobal) {   
       if (map?._impl?._overlaysController?._items.length > 0) {
         map.removeOverlays(map?._impl?._overlaysController?._items);
+        polylineOverlayAdded = false;
       }
     }
   }
