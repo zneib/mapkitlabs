@@ -4,6 +4,7 @@
 	import MenuButton from '$lib/MenuButton.svelte';
 
   let polygonOverlay = null;
+  let polygonOverlayAdded = $state(false);
 
   let overlayFillColor = $state("rgb(0, 122, 255)");
   let overlayFillOpacity = $state(0.1);
@@ -40,6 +41,14 @@
       const rectangle = new mapkit.PolygonOverlay(coords, { style: style });
       polygonOverlay = rectangle; // Store reference to the overlay
       map.addOverlay(rectangle);
+      polygonOverlayAdded = true;
+    }
+  }
+
+  function removeCustomPolygonOverlay() {
+    if (map && mapkitGlobal) {
+      map.removeOverlay(polygonOverlay);
+      polygonOverlayAdded = false;
     }
   }
 
@@ -47,6 +56,7 @@
     if (map && mapkitGlobal) {   
       if (map?._impl?._overlaysController?._items.length > 0) {
         map.removeOverlays(map?._impl?._overlaysController?._items);
+        polygonOverlayAdded = false;
       }
     }
   }
