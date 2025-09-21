@@ -15,7 +15,7 @@
   let mapkitGlobal;
 
   onMount(async () => {
-    await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
+    // await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
 		mapkit.init({
 			authorizationCallback: function(done) {
 					done(PUBLIC_MAP_TOKEN);
