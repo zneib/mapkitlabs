@@ -3,6 +3,8 @@
   import circleOverlay from '$lib/icons/circleOverlay.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
 
+  let circleOverlayAdded = $state(false);
+
   let overlayFillColor = $state("rgb(0, 122, 255)");
   let overlayFillOpacity = $state(0.1);
   let overlayFillRule = $state("nonzero");
@@ -45,6 +47,7 @@
         return circle;
       });
       map.addOverlays(circles);
+      circleOverlayAdded = true;
     }
   }
 
@@ -52,6 +55,7 @@
     if (map && mapkitGlobal) {   
       if (map?._impl?._overlaysController?._items.length > 0) {
         map.removeOverlays(map?._impl?._overlaysController?._items);
+        circleOverlayAdded = false;
       }
     }
   }
@@ -142,7 +146,7 @@
   </div>
   <div class="button-row">
     <button class="custom-btn" onclick={removeAllOverlays}>Remove All Overlays</button>
-    <button class="custom-btn" onclick={polygonOverlayAdded ? removeCustomPolygonOverlay : addPolygonOverlay}>Toggle Custom Overlay</button>
+    <button class="custom-btn" onclick={circleOverlayAdded ? removeAllOverlays : addCircleOverlay}>Toggle Custom Overlay</button>
   </div>
 </div>
 
