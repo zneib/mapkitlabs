@@ -19,6 +19,7 @@
 
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
+      console.log(map._impl)
       const points = [ [41, -109.05], [41, -102.05], [37, -102.05], [37, -109.05] ];
       // Map the raw coordinate points to MapKit JS Coordinate objects:
       const coords = points.map(function(point) {
@@ -41,6 +42,16 @@
       const rectangle = new mapkit.PolygonOverlay(coords, { style: style });
       polygonOverlay = rectangle; // Store reference to the overlay
       map.addOverlay(rectangle);
+      // const centerMapPoint = new mapkit.MapPoint(
+      //   rectangle._impl._boundingRect.origin.x + rectangle._impl._boundingRect.size.width / 2,
+      //   rectangle._impl._boundingRect.origin.y + rectangle._impl._boundingRect.size.height / 2
+      // );
+      // Create a region from the overlay's bounds
+      // const region = new mapkit.CoordinateRegion(
+      //     new mapkit.Coordinate(rectangle._impl._boundingRect.origin.y, rectangle._impl._boundingRect.origin.x),
+      //     new mapkit.CoordinateSpan(rectangle._impl._boundingRect.size.width, rectangle._impl._boundingRect.size.height)
+      // );
+      // map.setRegionAnimated(region, true);
       polygonOverlayAdded = true;
     }
   }

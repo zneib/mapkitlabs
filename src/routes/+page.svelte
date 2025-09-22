@@ -14,6 +14,8 @@
   let map;
   let mapkitGlobal;
 
+  let currentZoomLevel = $state(0);
+
   onMount(async () => {
     // await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
 		mapkit.init({
@@ -34,6 +36,10 @@
       _allowWheelToZoom: true,
       showsScale: true,
     });
+    currentZoomLevel = map._impl.zoomLevel.toFixed(2);
+    map.addEventListener('region-change-end', (event) => {
+      currentZoomLevel = map._impl.zoomLevel.toFixed(2);
+    });
   });
 </script>
 
@@ -44,6 +50,9 @@
   <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <PolylineOverlay map={map} mapkitGlobal={mapkitGlobal} />
+  <div class="menu-btn">
+    Current Zoom Level: {currentZoomLevel}
+  </div>
 </div>
 
 <style>
@@ -74,5 +83,20 @@
   }
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
+  }
+  .menu-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    z-index: 1;
+    background: var(--gray-nine);
+    border: 2px solid var(--blue-ten);
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
   }
 </style>
