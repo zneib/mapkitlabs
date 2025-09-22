@@ -19,7 +19,7 @@
 
   function addPolygonOverlay() {
     if (map && mapkitGlobal) {
-      console.log(map._impl)
+      // console.log(map._impl.center)
       const points = [ [41, -109.05], [41, -102.05], [37, -102.05], [37, -109.05] ];
       // Map the raw coordinate points to MapKit JS Coordinate objects:
       const coords = points.map(function(point) {

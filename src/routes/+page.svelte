@@ -15,6 +15,7 @@
   let mapkitGlobal;
 
   let currentZoomLevel = $state(0);
+  let currentMapCenter = $state({ lat: 0, lng: 0 });
 
   onMount(async () => {
     // await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
@@ -37,8 +38,10 @@
       showsScale: true,
     });
     currentZoomLevel = map._impl.zoomLevel.toFixed(2);
+    currentMapCenter = { lat: map._impl.center.latitude, lng: map._impl.center.longitude };
     map.addEventListener('region-change-end', (event) => {
       currentZoomLevel = map._impl.zoomLevel.toFixed(2);
+      currentMapCenter = { lat: map._impl.center.latitude, lng: map._impl.center.longitude };
     });
   });
 </script>
@@ -51,7 +54,8 @@
   <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <PolylineOverlay map={map} mapkitGlobal={mapkitGlobal} />
   <div class="menu-btn">
-    Current Zoom Level: {currentZoomLevel}
+    <p>Zoom Level: {currentZoomLevel}</p>
+    <p>Map Center: {currentMapCenter.lat.toFixed(4)}, {currentMapCenter.lng.toFixed(4)}</p>
   </div>
 </div>
 
@@ -93,10 +97,8 @@
     border: 2px solid var(--blue-ten);
     border-radius: 5px;
     padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     color: #000;
+    font-size: 0.75rem;
   }
 </style>
