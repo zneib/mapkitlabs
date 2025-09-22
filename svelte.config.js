@@ -10,8 +10,8 @@ const config = {
 	},
 	vitePlugin: {
 		inspector: {
-			toggleKeyCombo: 'command-alt-x',
-			showToggleButton: 'always',
+			toggleKeyCombo: 'control-shift-x',
+			showToggleButton: 'active',
 			toggleButtonPos: 'bottom-right'
 		}
 	}
