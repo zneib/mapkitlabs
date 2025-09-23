@@ -65,6 +65,11 @@
 <div popover id="custom-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>
+    <!-- <a class="code-link" href="https://developer.apple.com/documentation/mapkitjs/markerannotation" target="_blank" aria-label="Documentation" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+      </svg>
+    </a> -->
     <a class="code-link" href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank" aria-label="Code Sample">
       <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
@@ -110,22 +115,6 @@
 </div>
 
 <style>
-  /* .menu-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-    border: 2px solid var(--blue-ten);
-    border-radius: 5px;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    span {
-      padding-left: 5px;
-    }
-  } */
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
   }
