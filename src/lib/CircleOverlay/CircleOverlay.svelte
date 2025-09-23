@@ -75,10 +75,6 @@
 </script>
 
 <MenuButton target="circle-overlay-popover" topValue="210px" text="Circle Overlay" />
-<!-- <button class="menu-btn" onclick={addCircleOverlay} style:top="210px">
-  <img src={circleOverlay} alt="circle overlay" />
-  <span>Circle Overlay</span>
-</button> -->
 <div popover id="circle-overlay-popover" class="popover">
   <div class="top-row">
     <h2>Overlay Properties</h2>

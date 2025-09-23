@@ -215,11 +215,6 @@
     border-radius: 4px;
     font-size: 0.8rem;
   }
-  .annotation-input-small {
-    padding: 5px;
-    margin-top: 5px;
-    font-size: 0.8rem;
-  }
   .close-btn {
     background-color: transparent;
     border: none;

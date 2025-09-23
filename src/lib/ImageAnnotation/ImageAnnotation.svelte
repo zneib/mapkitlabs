@@ -59,10 +59,6 @@
 </script>
 
 <MenuButton target="image-annotation-popover" topValue="110px" text="Image Annotation" />
-<!-- <button class="menu-btn" popovertarget="image-annotation-popover" style:top="110px">
-  <img src={image} alt="icon" />
-  <span>Image Annotation</span>
-</button> -->
 <div popover id="image-annotation-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>
@@ -190,10 +186,4 @@
       margin-top: 0;
     }
   }
-  /* .color-btn {
-    width: 29px;
-    height: 20px;
-    border: none;
-    border-radius: 2px;
-  } */
 </style>

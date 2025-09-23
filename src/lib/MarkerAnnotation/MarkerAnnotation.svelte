@@ -62,10 +62,6 @@
 </script>
 
 <MenuButton target="custom-popover" topValue="60px" text="Marker Annotation" />
-<!-- <button class="menu-btn" popovertarget="custom-popover" popovertargetaction="toggle" style:top="60px">
-  <img src={marker} alt="marker" />
-  <span>Marker Annotation</span>
-</button> -->
 <div popover id="custom-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>

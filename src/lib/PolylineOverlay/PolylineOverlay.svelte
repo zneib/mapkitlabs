@@ -86,21 +86,6 @@
   </div>
   <div class="section-wrapper">
     <aside class="option-section">
-      <!-- <div>
-        <label for="fillColor">Fill Color</label>
-        <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
-      </div> -->
-      <!-- <div>
-        <label for="fillOpacity">Fill Opacity</label>
-        <input bind:value={overlayFillOpacity} class="annotation-input" type="number" name="fillOpacity" id="fillOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
-      </div> -->
-      <!-- <div>
-        <label for="fillRule">Fill Rule</label>
-        <select bind:value={overlayFillRule} class="annotation-input" name="fillRule" id="fillRule" onchange={resetOverlayWithNewData}>
-          <option value="nonzero">Non-Zero</option>
-          <option value="evenodd">Even-Odd</option>
-        </select>
-      </div> -->
       <div>
         <label for="lineCap">Line Cap</label>
         <select bind:value={overlayLineCap} class="annotation-input" name="lineCap" id="lineCap" onchange={resetOverlayWithNewData}>
