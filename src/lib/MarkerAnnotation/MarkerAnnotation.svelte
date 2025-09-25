@@ -4,6 +4,8 @@
 	import MenuButton from '$lib/MenuButton.svelte';
 
   let annotationAdded = $state(false);
+  let markerAnnotationLat = $state(37.334883);
+  let markerAnnotationLng = $state(-122.008977);
   let markerAnnotationTitle = $state('');
   let markerAnnotationSubtitle = $state('');
   let markerAnnotationColor = ('30b567');
@@ -13,7 +15,7 @@
   function addAnnotation() {
     if (map && mapkitGlobal) {
       map.removeAnnotation(map.selectedAnnotation);
-      const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(37.334883, -122.008977), {
+      const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
@@ -34,7 +36,7 @@
     if (map && mapkitGlobal) {
       map.removeAnnotations(map._impl._annotationsController._items); // Remove all annotations
       // map.removeAnnotation(map.selectedAnnotation); // Only remove the selected annotation, which won't work if the annotation isn't selected
-      const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(37.334883, -122.008977), {
+      const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
@@ -79,6 +81,14 @@
   </div>
   <div class="section-wrapper">
     <aside class="option-section">
+      <div>
+        <label for="markerAnnotationLat">Latitude</label>
+        <input bind:value={markerAnnotationLat} class="annotation-input" type="number" name="markerAnnotationLat" id="markerAnnotationLat" placeholder="Enter Latitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationLng">Longitude</label>
+        <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
+      </div>
       <div>
         <label for="markerAnnotationTitle">Title</label>
         <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a Title" onblur={resetAnnotationWithNewData} />
