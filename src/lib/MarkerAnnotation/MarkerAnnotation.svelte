@@ -9,6 +9,7 @@
   let markerAnnotationTitle = $state('');
   let markerAnnotationSubtitle = $state('');
   let markerAnnotationColor = ('30b567');
+  let markerAnnotationGlyphColor = ('white');
   let markerAnnotationSelected = $state(true);
   let markerAnnotationDraggable = $state(true);
 
@@ -19,6 +20,7 @@
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
+        glyphColor: markerAnnotationGlyphColor,
         selected: markerAnnotationSelected,
         draggable: markerAnnotationDraggable
       });
@@ -57,6 +59,10 @@
     markerAnnotationColor = color;
     resetAnnotationWithNewData();
   }
+  function setAnnotationGlyphColor(color) {
+    markerAnnotationGlyphColor = color;
+    resetAnnotationWithNewData();
+  }
   function closePopover() {
     const popoverId = $state(document.getElementById('custom-popover'));
     popoverId.hidePopover();
@@ -90,7 +96,9 @@
         <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
       </div>
       <div>
-        <label for="markerAnnotationTitle">Title</label>
+        <label for="markerAnnotationTitle">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/title" target="_blank">Title</a>
+        </label>
         <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a Title" onblur={resetAnnotationWithNewData} />
       </div>
       <div>
@@ -98,7 +106,9 @@
         <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
       </div>
       <div>
-        <label for="markerAnnotationColor">Color</label>
+        <label for="markerAnnotationColor">
+          <a href="https://developer.apple.com/documentation/mapkitjs/markerannotationconstructoroptions/color" target="_blank">Color</a>
+        </label>
         <button onclick={setAnnotationColor('#044E54')} aria-label="CyanOne" class="annotation-input color-btn" style:background-color="#044E54"></button>
         <button onclick={setAnnotationColor('#0A6C74')} aria-label="CyanTwo" class="annotation-input color-btn" style:background-color="#0A6C74"></button>
         <button onclick={setAnnotationColor('#0E7C86')} aria-label="CyanThree" class="annotation-input color-btn" style:background-color="#0E7C86"></button>
@@ -106,6 +116,15 @@
         <button onclick={setAnnotationColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
         <button onclick={setAnnotationColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
       </div>
+      <!-- <div>
+        <label for="markerAnnotationGlyphColor">Glyph Color</label>
+        <button onclick={setAnnotationGlyphColor('#044E54')} aria-label="CyanOne" class="annotation-input color-btn" style:background-color="#044E54"></button>
+        <button onclick={setAnnotationGlyphColor('#0A6C74')} aria-label="CyanTwo" class="annotation-input color-btn" style:background-color="#0A6C74"></button>
+        <button onclick={setAnnotationGlyphColor('#0E7C86')} aria-label="CyanThree" class="annotation-input color-btn" style:background-color="#0E7C86"></button>
+        <button onclick={setAnnotationGlyphColor('#14919B')} aria-label="CyanFour" class="annotation-input color-btn" style:background-color="#14919B"></button>
+        <button onclick={setAnnotationGlyphColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
+        <button onclick={setAnnotationGlyphColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
+      </div> -->
     </aside>
     <aside class="option-section">
       <div>
