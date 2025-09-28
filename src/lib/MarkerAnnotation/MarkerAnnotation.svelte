@@ -13,6 +13,12 @@
   let markerAnnotationSelected = $state(true);
   let markerAnnotationDraggable = $state(true);
 
+  // if (map && mapkitGlobal) {
+  //   map.addEventListener('drag-start', (event) => {
+  //     console.log(event);
+  //   });
+  // }
+
   function addAnnotation() {
     if (map && mapkitGlobal) {
       map.removeAnnotation(map.selectedAnnotation);
@@ -88,11 +94,15 @@
   <div class="section-wrapper">
     <aside class="option-section">
       <div>
-        <label for="markerAnnotationLat">Latitude</label>
+        <label for="markerAnnotationLat">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.coordinate/mapkit.coordinate" target="_blank">Latitude</a>
+        </label>
         <input bind:value={markerAnnotationLat} class="annotation-input" type="number" name="markerAnnotationLat" id="markerAnnotationLat" placeholder="Enter Latitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
       </div>
       <div>
-        <label for="markerAnnotationLng">Longitude</label>
+        <label for="markerAnnotationLng">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.coordinate/mapkit.coordinate" target="_blank">Longitude</a>
+        </label>
         <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
       </div>
       <div>
@@ -102,7 +112,9 @@
         <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a Title" onblur={resetAnnotationWithNewData} />
       </div>
       <div>
-        <label for="markerAnnotationSub">Subtitle</label>
+        <label for="markerAnnotationSub">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/subtitle" target="_blank">Subtitle</a>
+        </label>
         <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
       </div>
       <div>
