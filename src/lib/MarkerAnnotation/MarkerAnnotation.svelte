@@ -2,6 +2,15 @@
   let { map, mapkitGlobal } = $props();
   import marker from '$lib/icons/marker.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
+  
+  $effect(() => {
+    if (map && mapkitGlobal) {
+      console.log(map)
+      // map.addEventListener('drag-start', (event) => {
+      //   console.log(event);
+      // });
+    }
+  });
 
   let annotationAdded = $state(false);
   let markerAnnotationLat = $state(37.334883);
@@ -12,12 +21,6 @@
   let markerAnnotationGlyphColor = ('white');
   let markerAnnotationSelected = $state(true);
   let markerAnnotationDraggable = $state(true);
-
-  // if (map && mapkitGlobal) {
-  //   map.addEventListener('drag-start', (event) => {
-  //     console.log(event);
-  //   });
-  // }
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
@@ -61,7 +64,6 @@
     }
   }
   function setAnnotationColor(color) {
-    console.log(color)
     markerAnnotationColor = color;
     resetAnnotationWithNewData();
   }

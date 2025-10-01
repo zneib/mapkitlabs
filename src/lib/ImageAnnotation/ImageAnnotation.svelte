@@ -72,21 +72,29 @@
 <div class="section-wrapper">
     <aside class="option-section">
       <div>
-        <label for="imageAnnotationTitle">Title</label>
+        <label for="markerAnnotationTitle">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/title" target="_blank">Title</a>
+        </label>
         <input bind:value={imageAnnotationTitle} class="annotation-input" type="text" name="imageAnnotationTitle" id="imageAnnotationTitle" placeholder="Enter a Title" onblur={resetAnnotationWithNewData} />
       </div>
       <div>
-        <label for="imageAnnotationSub">Subtitle</label>
+        <label for="markerAnnotationSub">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/subtitle" target="_blank">Subtitle</a>
+        </label>
         <input bind:value={imageAnnotationSubtitle} class="annotation-input" type="text" name="imageAnnotationSubtitle" id="imageAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
       </div>
     </aside>
     <aside class="option-section">
       <div>
-        <label for="imageAnnotationSelected">Selected</label>
+        <label for="imageAnnotationSelected">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/selected" target="_blank">Selected</a>
+        </label>
         <input bind:checked={imageAnnotationSelected} class="annotation-input-small" type="checkbox" name="imageAnnotationSelected" id="imageAnnotationSelected" onchange={resetAnnotationWithNewData} />
       </div>
       <div>
-        <label for="imageAnnotationDraggable">Draggable</label>
+        <label for="imageAnnotationDraggable">
+          <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/draggable" target="_blank">Draggable</a>
+        </label>
         <input bind:checked={imageAnnotationDraggable} class="annotation-input-small" type="checkbox" name="imageAnnotationDraggable" id="imageAnnotationDraggable" onchange={resetAnnotationWithNewData} />
       </div>
     </aside>

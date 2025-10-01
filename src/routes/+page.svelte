@@ -11,8 +11,8 @@
   import PolylineOverlay from '$lib/PolylineOverlay/PolylineOverlay.svelte';
 
   // Global variables to hold the map and mapkit objects
-  let map;
-  let mapkitGlobal;
+  let map = $state({});
+  let mapkitGlobal = $state({});
 
   let currentZoomLevel = $state(0);
   let currentMapCenter = $state({ lat: 0, lng: 0 });
@@ -43,6 +43,11 @@
       currentZoomLevel = map._impl.zoomLevel.toFixed(2);
       currentMapCenter = { lat: map._impl.center.latitude, lng: map._impl.center.longitude };
     });
+    // if (map && mapkitGlobal) {
+    //   map.addEventListener('drag-start', (event) => {
+    //     console.log(event);
+    //   });
+    // }
   });
 </script>
 
