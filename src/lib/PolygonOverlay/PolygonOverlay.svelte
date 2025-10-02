@@ -100,7 +100,9 @@
   <div class="section-wrapper">
     <aside class="option-section">
       <div>
-        <label for="fillColor">Fill Color</label>
+        <label for="fillColor">
+          <a href="https://developer.apple.com/documentation/mapkitjs/style/fillcolor" target="_blank">Fill Color</a>
+        </label>
         <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
       </div>
       <div>
