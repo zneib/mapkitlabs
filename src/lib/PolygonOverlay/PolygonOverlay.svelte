@@ -106,18 +106,18 @@
         <input bind:value={overlayFillColor} class="annotation-input" type="text" name="fillColor" id="fillColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
       </div>
       <div>
-        <label for="fillOpacity">Fill Opacity</label>
+        <label for="fillOpacity"><a href="https://developer.apple.com/documentation/mapkitjs/style/fillopacity" target="_blank" rel="noopener noreferrer">Fill Opacity</a></label>
         <input bind:value={overlayFillOpacity} class="annotation-input" type="number" name="fillOpacity" id="fillOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
       </div>
       <div>
-        <label for="fillRule">Fill Rule</label>
+        <label for="fillRule"><a href="https://developer.apple.com/documentation/mapkitjs/style/fillrule" target="_blank" rel="noopener noreferrer">Fill Rule</a></label>
         <select bind:value={overlayFillRule} class="annotation-input" name="fillRule" id="fillRule" onchange={resetOverlayWithNewData}>
           <option value="nonzero">Non-Zero</option>
           <option value="evenodd">Even-Odd</option>
         </select>
       </div>
       <div>
-        <label for="lineCap">Line Cap</label>
+        <label for="lineCap"><a href="https://developer.apple.com/documentation/mapkitjs/style/linecap" target="_blank" rel="noopener noreferrer">Line Cap</a></label>
         <select bind:value={overlayLineCap} class="annotation-input" name="lineCap" id="lineCap" onchange={resetOverlayWithNewData}>
           <option value="butt">Butt</option>
           <option value="round">Round</option>
@@ -129,11 +129,11 @@
         <input bind:value={overlayLineDash} class="annotation-input" type="text" name="lineDash" id="lineDash" placeholder="[10, 5]" onblur={resetOverlayWithNewData} />
       </div> -->
       <div>
-        <label for="lineDashOffset">Line Dash Offset</label>
+        <label for="lineDashOffset"><a href="https://developer.apple.com/documentation/mapkitjs/style/linedashoffset" target="_blank" rel="noopener noreferrer">Line Dash Offset</a></label>
         <input bind:value={overlayLineDashOffset} class="annotation-input" type="number" name="lineDashOffset" id="lineDashOffset" placeholder="0" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
       </div>
       <div>
-        <label for="lineJoin">Line Join</label>
+        <label for="lineJoin"><a href="https://developer.apple.com/documentation/mapkitjs/style/linejoin" target="_blank" rel="noopener noreferrer">Line Join</a></label>
         <select bind:value={overlayLineJoin} class="annotation-input" name="lineJoin" id="lineJoin" onchange={resetOverlayWithNewData}>
           <option value="round">Round</option>
           <option value="bevel">Bevel</option>
@@ -141,15 +141,15 @@
         </select>
       </div>
       <div>
-        <label for="lineWidth">Line Width</label>
+        <label for="lineWidth"><a href="https://developer.apple.com/documentation/mapkitjs/style/linewidth" target="_blank" rel="noopener noreferrer">Line Width</a></label>
         <input bind:value={overlayLineWidth} class="annotation-input" type="number" name="lineWidth" id="lineWidth" placeholder="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
       </div>
       <div>
-        <label for="strokeColor">Stroke Color</label>
+        <label for="strokeColor"><a href="https://developer.apple.com/documentation/mapkitjs/style/strokecolor" target="_blank" rel="noopener noreferrer">Stroke Color</a></label>
         <input bind:value={overlayStrokeColor} class="annotation-input" type="text" name="strokeColor" id="strokeColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
       </div>
       <div>
-        <label for="strokeOpacity">Stroke Opacity</label>
+        <label for="strokeOpacity"><a href="https://developer.apple.com/documentation/mapkitjs/style/strokeopacity" target="_blank" rel="noopener noreferrer">Stroke Opacity</a></label>
         <input bind:value={overlayStrokeOpacity} class="annotation-input" type="number" name="strokeOpacity" id="strokeOpacity" placeholder="0.1 - 1" step="0.1" min="0.1" max="1" oninput={resetOverlayWithNewData} onblur={resetOverlayWithNewData} />
       </div>
     </aside>
