@@ -1,3 +1,8 @@
+<svelte:head>
+  <title>MapKit Labs</title>
+  <meta name="description" content="A playground for experimenting with Apple MapKit JS features and capabilities using Svelte.js and SvelteKit." />
+</svelte:head>
+
 <script>
   import { PUBLIC_MAP_TOKEN } from '$env/static/public';
   import { onMount } from 'svelte';
