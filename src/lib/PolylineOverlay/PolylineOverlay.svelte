@@ -13,7 +13,7 @@
   let overlayLineDashOffset = $state(0);
   let overlayLineJoin = $state("round");
   let overlayLineWidth = $state(1);
-  let overlayStrokeColor = $state("rgb(0, 122, 255)");
+  let overlayStrokeColor = $state("rgb(255, 0, 0)");
   let overlayStrokeOpacity = $state(1);
 
   function addPolylineOverlay() {
@@ -116,7 +116,7 @@
       </div>
       <div>
         <label for="strokeColor">Stroke Color</label>
-        <input bind:value={overlayStrokeColor} class="annotation-input" type="text" name="strokeColor" id="strokeColor" placeholder="rgb(0, 122, 255)" onblur={resetOverlayWithNewData} />
+        <input bind:value={overlayStrokeColor} class="annotation-input" type="text" name="strokeColor" id="strokeColor" placeholder="rgb(255,0,0)" onblur={resetOverlayWithNewData} />
       </div>
       <div>
         <label for="strokeOpacity">Stroke Opacity</label>
