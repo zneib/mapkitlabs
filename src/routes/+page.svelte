@@ -6,6 +6,7 @@
 <script>
   import { PUBLIC_MAP_TOKEN } from '$env/static/public';
   import { onMount } from 'svelte';
+  import { load } from '@apple/mapkit-loader';
   import marker from '$lib/icons/marker.svg'
   import accessory from '$lib/icons/accessory.svg'
   import ImageAnnotation from '$lib/ImageAnnotation/ImageAnnotation.svelte';
@@ -24,12 +25,17 @@
 
   onMount(async () => {
     // await import('https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js');
-		mapkit.init({
-			authorizationCallback: function(done) {
-					done(PUBLIC_MAP_TOKEN);
-			},
-			language: "en"
-		});
+		// mapkit.init({
+		// 	authorizationCallback: function(done) {
+		// 			done(PUBLIC_MAP_TOKEN);
+		// 	},
+		// 	language: "en"
+		// });
+    const mapkit = await load({
+      token: PUBLIC_MAP_TOKEN,
+      language: "en-US",
+      libraries: ["services", "full-map", "geojson"],
+    });
 
     mapkitGlobal = mapkit
     map = new mapkit.Map('mapContainer', { 
