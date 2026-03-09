@@ -2,15 +2,6 @@
   let { map, mapkitGlobal } = $props();
   import marker from '$lib/icons/marker.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
-  
-  $effect(() => {
-    if (map && mapkitGlobal) {
-      console.log(map)
-      // map.addEventListener('drag-start', (event) => {
-      //   console.log(event);
-      // });
-    }
-  });
 
   let annotationAdded = $state(false);
   let markerAnnotationLat = $state(37.334883);
