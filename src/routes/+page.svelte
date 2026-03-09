@@ -65,6 +65,7 @@
   <div class="menu-btn">
     <p>Zoom Level: {currentZoomLevel}</p>
     <p>Map Center: {currentMapCenter.lat.toFixed(4)}, {currentMapCenter.lng.toFixed(4)}</p>
+    <p>MapKit JS Version: {mapkitGlobal?.version}</p>
   </div>
 </div>
 
