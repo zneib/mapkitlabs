@@ -29,6 +29,7 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
-		"@apple/mapkit-loader": "^0.2.1"
+		"@apple/mapkit-loader": "^0.2.1",
+		"@vercel/analytics": "^1.6.1"
 	}
 }
