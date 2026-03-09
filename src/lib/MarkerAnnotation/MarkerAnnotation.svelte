@@ -10,8 +10,10 @@
   let markerAnnotationSubtitle = $state('');
   let markerAnnotationColor = ('30b567');
   let markerAnnotationGlyphColor = ('white');
-  let markerAnnotationSelected = $state(true);
+  let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
+
+
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
@@ -25,8 +27,16 @@
         draggable: markerAnnotationDraggable
       });
       map.addAnnotation(annotation);
+
+      // Remove previous listener before adding a new one
+      // annotation.removeEventListener("select", onAnnotationSelect);
+      annotation.addEventListener("select", onAnnotationSelect);
       annotationAdded = true;
     }
+  }
+  function onAnnotationSelect(event) {
+    const annotation = event.target;
+    console.log(annotation.title, annotation.coordinate);
   }
   function removeCustomMarkerAnnotation() {
     if (map && mapkitGlobal) {
