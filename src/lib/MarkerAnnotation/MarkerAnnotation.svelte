@@ -13,11 +13,19 @@
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
 
-
+  let randomAnnotations = $state([ 
+    { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false },
+    { title: 'Disneyworld', subtitle: 'Florida, USA', lat: 28.3852, lng: -81.5639, selected: false, draggable: false },
+    { title: 'Eiffel Tower', subtitle: 'Paris, France', lat: 48.8584, lng: 2.2945, selected: false, draggable: false },
+    { title: 'Great Wall of China', subtitle: 'China', lat: 40.4319, lng: 116.5704, selected: false, draggable: false },
+    { title: 'Machu Picchu', subtitle: 'Peru', lat: -13.1631, lng: -72.5450, selected: false, draggable: false },
+    { title: 'Pyramids of Giza', subtitle: 'Giza, Egypt', lat: 29.9792, lng: 31.1342, selected: false, draggable: false },
+    { title: 'Sydney Opera House', subtitle: 'Sydney, Australia', lat: -33.8568, lng: 151.2153, selected: false, draggable: false },
+  ]);
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
-      map.removeAnnotation(map.selectedAnnotation);
+      // map.removeAnnotation(map.selectedAnnotation);
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
@@ -154,7 +162,7 @@
   </div>
   <div class="button-row">
     <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
-    <button class="custom-btn" onclick={annotationAdded ? removeCustomMarkerAnnotation : addAnnotation}>Toggle Custom Annotation</button>
+    <button class="custom-btn" onclick={addAnnotation}>Add Marker Annotation</button>
   </div>
 </div>
 
