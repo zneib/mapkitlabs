@@ -84,6 +84,19 @@
     const popoverId = $state(document.getElementById('custom-popover'));
     popoverId.hidePopover();
   }
+  function addRandomAnnotation() {
+    if (map && mapkitGlobal) {
+      const randomIndex = Math.floor(Math.random() * randomAnnotations.length);
+      const randomAnnotationData = randomAnnotations[randomIndex];
+      const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(randomAnnotationData.lat, randomAnnotationData.lng), {
+        title: randomAnnotationData.title,
+        subtitle: randomAnnotationData.subtitle,
+        selected: randomAnnotationData.selected,
+        draggable: randomAnnotationData.draggable
+      });
+      map.addAnnotation(annotation);
+    }
+  }
 </script>
 
 <MenuButton target="custom-popover" topValue="60px" text="Marker Annotation" />
@@ -164,6 +177,7 @@
     <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
     <button class="custom-btn" onclick={addAnnotation}>Add Marker Annotation</button>
   </div>
+  <button class="custom-btn" onclick={addRandomAnnotation}>Random Annotation</button>
 </div>
 
 <style>
