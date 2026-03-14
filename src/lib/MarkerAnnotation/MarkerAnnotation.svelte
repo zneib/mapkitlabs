@@ -8,19 +8,19 @@
   let markerAnnotationLng = $state(-122.008977);
   let markerAnnotationTitle = $state('');
   let markerAnnotationSubtitle = $state('');
-  let markerAnnotationColor = ('30b567');
+  let markerAnnotationColor = ('#30b567');
   let markerAnnotationGlyphColor = ('white');
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
 
   let randomAnnotations = $state([ 
-    { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false },
-    { title: 'Disneyworld', subtitle: 'Florida, USA', lat: 28.3852, lng: -81.5639, selected: false, draggable: false },
-    { title: 'Eiffel Tower', subtitle: 'Paris, France', lat: 48.8584, lng: 2.2945, selected: false, draggable: false },
-    { title: 'Great Wall of China', subtitle: 'China', lat: 40.4319, lng: 116.5704, selected: false, draggable: false },
-    { title: 'Machu Picchu', subtitle: 'Peru', lat: -13.1631, lng: -72.5450, selected: false, draggable: false },
-    { title: 'Pyramids of Giza', subtitle: 'Giza, Egypt', lat: 29.9792, lng: 31.1342, selected: false, draggable: false },
-    { title: 'Sydney Opera House', subtitle: 'Sydney, Australia', lat: -33.8568, lng: 151.2153, selected: false, draggable: false },
+    { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false, color: '#38BEC9', glyphColor: 'white' },
+    { title: 'Disneyworld', subtitle: 'Florida, USA', lat: 28.3852, lng: -81.5639, selected: false, draggable: false, color: '#FF5733', glyphColor: 'white' },
+    { title: 'Eiffel Tower', subtitle: 'Paris, France', lat: 48.8584, lng: 2.2945, selected: false, draggable: false, color: '#33FF57', glyphColor: 'white' },
+    { title: 'Great Wall of China', subtitle: 'China', lat: 40.4319, lng: 116.5704, selected: false, draggable: false, color: '#3357FF', glyphColor: 'white' },
+    { title: 'Machu Picchu', subtitle: 'Peru', lat: -13.1631, lng: -72.5450, selected: false, draggable: false, color: '#FF33A1', glyphColor: 'white' },
+    { title: 'Pyramids of Giza', subtitle: 'Giza, Egypt', lat: 29.9792, lng: 31.1342, selected: false, draggable: false, color: '#A133FF', glyphColor: 'white' },
+    { title: 'Sydney Opera House', subtitle: 'Sydney, Australia', lat: -33.8568, lng: 151.2153, selected: false, draggable: false, color: '#33A1FF', glyphColor: 'white' },
   ]);
 
   function addAnnotation() {
@@ -92,7 +92,9 @@
         title: randomAnnotationData.title,
         subtitle: randomAnnotationData.subtitle,
         selected: randomAnnotationData.selected,
-        draggable: randomAnnotationData.draggable
+        draggable: randomAnnotationData.draggable,
+        color: randomAnnotationData.color,
+        glyphColor: randomAnnotationData.glyphColor
       });
       map.addAnnotation(annotation);
     }
