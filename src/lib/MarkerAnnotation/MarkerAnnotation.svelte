@@ -44,7 +44,8 @@
   }
   function onAnnotationSelect(event) {
     const annotation = event.target;
-    console.log(annotation.title, annotation.coordinate);
+    map.setCenterAnimated(annotation.coordinate, true);
+    // console.log(annotation.title, annotation.coordinate);
   }
   function removeCustomMarkerAnnotation() {
     if (map && mapkitGlobal) {
@@ -96,6 +97,7 @@
         color: randomAnnotationData.color,
         glyphColor: randomAnnotationData.glyphColor
       });
+      annotation.addEventListener("select", onAnnotationSelect);
       map.addAnnotation(annotation);
     }
   }
