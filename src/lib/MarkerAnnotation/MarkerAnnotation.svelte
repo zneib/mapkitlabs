@@ -13,6 +13,8 @@
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
 
+  const addedIndexes = new Set(); // To track which random annotations have been added
+
   let randomAnnotations = $state([ 
     { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false, color: '#38BEC9', glyphColor: 'white' },
     { title: 'Disneyworld', subtitle: 'Florida, USA', lat: 28.3852, lng: -81.5639, selected: false, draggable: false, color: '#FF5733', glyphColor: 'white' },
@@ -87,6 +89,8 @@
   function addRandomAnnotation() {
     if (map && mapkitGlobal) {
       const randomIndex = Math.floor(Math.random() * randomAnnotations.length);
+      if (addedIndexes.has(randomIndex)) return;
+      addedIndexes.add(randomIndex);
       const randomAnnotationData = randomAnnotations[randomIndex];
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(randomAnnotationData.lat, randomAnnotationData.lng), {
         title: randomAnnotationData.title,
