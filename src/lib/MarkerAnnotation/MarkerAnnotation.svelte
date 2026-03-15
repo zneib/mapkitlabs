@@ -23,6 +23,11 @@
     { title: 'Machu Picchu', subtitle: 'Peru', lat: -13.1631, lng: -72.5450, selected: false, draggable: false, color: '#FF33A1', glyphColor: 'white' },
     { title: 'Pyramids of Giza', subtitle: 'Giza, Egypt', lat: 29.9792, lng: 31.1342, selected: false, draggable: false, color: '#A133FF', glyphColor: 'white' },
     { title: 'Sydney Opera House', subtitle: 'Sydney, Australia', lat: -33.8568, lng: 151.2153, selected: false, draggable: false, color: '#33A1FF', glyphColor: 'white' },
+    { title: 'Taj Mahal', subtitle: 'Agra, India', lat: 27.1751, lng: 78.0421, selected: false, draggable: false, color: '#FF5733', glyphColor: 'white' },
+    { title: 'Christ the Redeemer', subtitle: 'Rio de Janeiro, Brazil', lat: -22.9519, lng: -43.2105, selected: false, draggable: false, color: '#33FF57', glyphColor: 'white' },
+    { title: 'Colosseum', subtitle: 'Rome, Italy', lat: 41.8902, lng: 12.4922, selected: false, draggable: false, color: '#3357FF', glyphColor: 'white' },
+    { title: 'Golden Gate Bridge', subtitle: 'San Francisco, USA', lat: 37.8199, lng: -122.4783, selected: false, draggable: false, color: '#FF33A1', glyphColor: 'white' },
+    { title: 'Mount Fuji', subtitle: 'Japan', lat: 35.3606, lng: 138.7274, selected: false, draggable: false, color: '#A133FF', glyphColor: 'white' },
   ]);
 
   function addAnnotation() {
@@ -46,7 +51,8 @@
   }
   function onAnnotationSelect(event) {
     const annotation = event.target;
-    console.log(annotation.title, annotation.coordinate);
+    map.setCenterAnimated(annotation.coordinate, true);
+    // console.log(annotation.title, annotation.coordinate);
   }
   function removeCustomMarkerAnnotation() {
     if (map && mapkitGlobal) {
@@ -100,6 +106,7 @@
         color: randomAnnotationData.color,
         glyphColor: randomAnnotationData.glyphColor
       });
+      annotation.addEventListener("select", onAnnotationSelect);
       map.addAnnotation(annotation);
     }
   }
