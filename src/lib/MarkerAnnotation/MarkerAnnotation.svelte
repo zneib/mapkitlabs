@@ -16,18 +16,21 @@
   const addedIndexes = new Set(); // To track which random annotations have been added
 
   let randomAnnotations = $state([ 
-    { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false, color: '#38BEC9', glyphColor: 'white' },
-    { title: 'Disneyworld', subtitle: 'Florida, USA', lat: 28.3852, lng: -81.5639, selected: false, draggable: false, color: '#FF5733', glyphColor: 'white' },
-    { title: 'Eiffel Tower', subtitle: 'Paris, France', lat: 48.8584, lng: 2.2945, selected: false, draggable: false, color: '#33FF57', glyphColor: 'white' },
-    { title: 'Great Wall of China', subtitle: 'China', lat: 40.4319, lng: 116.5704, selected: false, draggable: false, color: '#3357FF', glyphColor: 'white' },
-    { title: 'Machu Picchu', subtitle: 'Peru', lat: -13.1631, lng: -72.5450, selected: false, draggable: false, color: '#FF33A1', glyphColor: 'white' },
-    { title: 'Pyramids of Giza', subtitle: 'Giza, Egypt', lat: 29.9792, lng: 31.1342, selected: false, draggable: false, color: '#A133FF', glyphColor: 'white' },
-    { title: 'Sydney Opera House', subtitle: 'Sydney, Australia', lat: -33.8568, lng: 151.2153, selected: false, draggable: false, color: '#33A1FF', glyphColor: 'white' },
-    { title: 'Taj Mahal', subtitle: 'Agra, India', lat: 27.1751, lng: 78.0421, selected: false, draggable: false, color: '#FF5733', glyphColor: 'white' },
-    { title: 'Christ the Redeemer', subtitle: 'Rio de Janeiro, Brazil', lat: -22.9519, lng: -43.2105, selected: false, draggable: false, color: '#33FF57', glyphColor: 'white' },
-    { title: 'Colosseum', subtitle: 'Rome, Italy', lat: 41.8902, lng: 12.4922, selected: false, draggable: false, color: '#3357FF', glyphColor: 'white' },
-    { title: 'Golden Gate Bridge', subtitle: 'San Francisco, USA', lat: 37.8199, lng: -122.4783, selected: false, draggable: false, color: '#FF33A1', glyphColor: 'white' },
-    { title: 'Mount Fuji', subtitle: 'Japan', lat: 35.3606, lng: 138.7274, selected: false, draggable: false, color: '#A133FF', glyphColor: 'white' },
+    { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false, color: '#044E54', glyphColor: 'white' },
+    { title: 'Disneyworld', subtitle: 'Florida, USA', lat: 28.3852, lng: -81.5639, selected: false, draggable: false, color: '#0A6C74', glyphColor: 'white' },
+    { title: 'Eiffel Tower', subtitle: 'Paris, France', lat: 48.8584, lng: 2.2945, selected: false, draggable: false, color: '#0E7C86', glyphColor: 'white' },
+    { title: 'Great Wall of China', subtitle: 'China', lat: 40.4319, lng: 116.5704, selected: false, draggable: false, color: '#14919B', glyphColor: 'white' },
+    { title: 'Machu Picchu', subtitle: 'Peru', lat: -13.1631, lng: -72.5450, selected: false, draggable: false, color: '#2CB1BC', glyphColor: 'white' },
+    { title: 'Pyramids of Giza', subtitle: 'Giza, Egypt', lat: 29.9792, lng: 31.1342, selected: false, draggable: false, color: '#610404', glyphColor: 'white' },
+    { title: 'Sydney Opera House', subtitle: 'Sydney, Australia', lat: -33.8568, lng: 151.2153, selected: false, draggable: false, color: '#780A0A', glyphColor: 'white' },
+    { title: 'Taj Mahal', subtitle: 'Agra, India', lat: 27.1751, lng: 78.0421, selected: false, draggable: false, color: '#911111', glyphColor: 'white' },
+    { title: 'Christ the Redeemer', subtitle: 'Rio de Janeiro, Brazil', lat: -22.9519, lng: -43.2105, selected: false, draggable: false, color: '#A61B1B', glyphColor: 'white' },
+    { title: 'Colosseum', subtitle: 'Rome, Italy', lat: 41.8902, lng: 12.4922, selected: false, draggable: false, color: '#BA2525', glyphColor: 'white' },
+    { title: 'Golden Gate Bridge', subtitle: 'San Francisco, USA', lat: 37.8199, lng: -122.4783, selected: false, draggable: false, color: '#8D2B0B', glyphColor: 'white' },
+    { title: 'Mount Fuji', subtitle: 'Japan', lat: 35.3606, lng: 138.7274, selected: false, draggable: false, color: '#B44D12', glyphColor: 'white' },
+    { title: 'Niagara Falls', subtitle: 'Ontario, Canada / New York, USA', lat: 43.0962, lng: -79.0377, selected: false, draggable: false, color: '#CB6E17', glyphColor: 'white' },
+    { title: 'Stonehenge', subtitle: 'Wiltshire, England', lat: 51.1789, lng: -1.8262, selected: false, draggable: false, color: '#DE911D', glyphColor: 'white' },
+    { title: 'Everest', subtitle: 'Nepal / China', lat: 27.9881, lng: 86.9250, selected: false, draggable: false, color: '#F0B429', glyphColor: 'white' },
   ]);
 
   function addAnnotation() {
