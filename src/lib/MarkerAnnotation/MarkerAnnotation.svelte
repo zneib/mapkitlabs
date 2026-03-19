@@ -111,6 +111,7 @@
       });
       annotation.addEventListener("select", onAnnotationSelect);
       map.addAnnotation(annotation);
+      map.setCenterAnimated(annotation.coordinate, true);
     }
   }
 </script>
