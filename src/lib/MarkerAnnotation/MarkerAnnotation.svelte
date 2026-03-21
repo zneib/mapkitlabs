@@ -1,5 +1,5 @@
 <script>
-  let { map, mapkitGlobal } = $props();
+  let { map, mapkitGlobal, onannotationadded, annotationsCount = $bindable(0) } = $props();
   import marker from '$lib/icons/marker.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
 
@@ -50,6 +50,8 @@
       // annotation.removeEventListener("select", onAnnotationSelect);
       annotation.addEventListener("select", onAnnotationSelect);
       annotationAdded = true;
+      annotationsCount += 1;
+      onannotationadded?.();
     }
   }
   function onAnnotationSelect(event) {
@@ -81,6 +83,7 @@
     if (map && mapkitGlobal) {
       map.removeAnnotations(map._impl._annotationsController._items);
       annotationAdded = false;
+      annotationsCount = 0;
     }
   }
   function setAnnotationColor(color) {
@@ -112,6 +115,8 @@
       annotation.addEventListener("select", onAnnotationSelect);
       map.addAnnotation(annotation);
       map.setCenterAnimated(annotation.coordinate, true);
+      annotationsCount += 1;
+      onannotationadded?.();
     }
   }
 </script>
