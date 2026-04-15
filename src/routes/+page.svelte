@@ -21,6 +21,7 @@
 
   let currentZoomLevel = $state(0);
   let currentMapCenter = $state({ lat: 0, lng: 0 });
+  let annotationsCount = $state(0);
 
   onMount(async () => {
     const { load } = await import('@apple/mapkit-loader');
@@ -56,7 +57,7 @@
 </script>
 
 <div id="mapContainer">
-  <MarkerAnnotation map={map} mapkitGlobal={mapkitGlobal} />
+  <MarkerAnnotation map={map} mapkitGlobal={mapkitGlobal} bind:annotationsCount />
   <ImageAnnotation map={map} mapkitGlobal={mapkitGlobal} />
   <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
   <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
@@ -66,6 +67,7 @@
     <p>Zoom Level: {currentZoomLevel}</p>
     <p>Map Center: {currentMapCenter.lat.toFixed(4)}, {currentMapCenter.lng.toFixed(4)}</p>
     <p>MapKit JS Version: {mapkitGlobal?.version}</p>
+    <p>Annotations Added: {annotationsCount}</p>
   </div>
 </div>
 
