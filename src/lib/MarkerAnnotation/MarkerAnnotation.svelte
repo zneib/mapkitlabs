@@ -1,6 +1,6 @@
 <script>
-  let { map, mapkitGlobal, onannotationadded, annotationsCount = $bindable(0) } = $props();
   import marker from '$lib/icons/marker.svg'
+  let { map, mapkitGlobal, onannotationadded, annotationsCount = $bindable(0) } = $props();
 	import MenuButton from '$lib/MenuButton.svelte';
 
   let annotationAdded = $state(false);
@@ -13,7 +13,7 @@
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
 
-  const addedIndexes = new Set(); // To track which random annotations have been added
+  let addedIndexes = $state([]); // To track which random annotations have been added
 
   let randomAnnotations = $state([ 
     { title: 'Arches National Park', subtitle: 'Utah, USA', lat: 38.7331, lng: -109.5925, selected: false, draggable: false, color: '#044E54', glyphColor: 'white' },
@@ -31,11 +31,16 @@
     { title: 'Niagara Falls', subtitle: 'Ontario, Canada / New York, USA', lat: 43.0962, lng: -79.0377, selected: false, draggable: false, color: '#CB6E17', glyphColor: 'white' },
     { title: 'Stonehenge', subtitle: 'Wiltshire, England', lat: 51.1789, lng: -1.8262, selected: false, draggable: false, color: '#DE911D', glyphColor: 'white' },
     { title: 'Everest', subtitle: 'Nepal / China', lat: 27.9881, lng: 86.9250, selected: false, draggable: false, color: '#F0B429', glyphColor: 'white' },
+    { title: 'Statue of Liberty', subtitle: 'New York, USA', lat: 40.6892, lng: -74.0445, selected: false, draggable: false, color: '#1B4D3E', glyphColor: 'white' },
+    { title: 'Petra', subtitle: 'Jordan', lat: 30.3285, lng: 35.4444, selected: false, draggable: false, color: '#C1714F', glyphColor: 'white' },
+    { title: 'Leaning Tower of Pisa', subtitle: 'Pisa, Italy', lat: 43.7230, lng: 10.3966, selected: false, draggable: false, color: '#536E70', glyphColor: 'white' },
+    { title: 'Big Ben', subtitle: 'London, England', lat: 51.5007, lng: -0.1246, selected: false, draggable: false, color: '#147D64', glyphColor: 'white' },
+    { title: 'Santorini', subtitle: 'Greece', lat: 36.3932, lng: 25.4615, selected: false, draggable: false, color: '#5F3DC4', glyphColor: 'white' },
+    { title: 'Grand Canyon', subtitle: 'Arizona, USA', lat: 36.1069, lng: -112.1129, selected: false, draggable: false, color: '#087F5B', glyphColor: 'white' }
   ]);
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
-      // map.removeAnnotation(map.selectedAnnotation);
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
@@ -84,14 +89,11 @@
       map.removeAnnotations(map._impl._annotationsController._items);
       annotationAdded = false;
       annotationsCount = 0;
+      addedIndexes = [];
     }
   }
   function setAnnotationColor(color) {
     markerAnnotationColor = color;
-    resetAnnotationWithNewData();
-  }
-  function setAnnotationGlyphColor(color) {
-    markerAnnotationGlyphColor = color;
     resetAnnotationWithNewData();
   }
   function closePopover() {
@@ -101,8 +103,8 @@
   function addRandomAnnotation() {
     if (map && mapkitGlobal) {
       const randomIndex = Math.floor(Math.random() * randomAnnotations.length);
-      if (addedIndexes.has(randomIndex)) return;
-      addedIndexes.add(randomIndex);
+      if (addedIndexes.includes(randomIndex)) return; // If the index has already been added, skip
+      addedIndexes.push(randomIndex);
       const randomAnnotationData = randomAnnotations[randomIndex];
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(randomAnnotationData.lat, randomAnnotationData.lng), {
         title: randomAnnotationData.title,
@@ -119,17 +121,15 @@
       onannotationadded?.();
     }
   }
+  $inspect(randomAnnotations.length)
+  $inspect(addedIndexes)
+  $inspect(addedIndexes.size === randomAnnotations.length)
 </script>
 
 <MenuButton target="custom-popover" topValue="60px" text="Marker Annotation" />
 <div popover id="custom-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>
-    <!-- <a class="code-link" href="https://developer.apple.com/documentation/mapkitjs/markerannotation" target="_blank" aria-label="Documentation" >
-      <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-      </svg>
-    </a> -->
     <a class="code-link" href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank" aria-label="Code Sample">
       <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
@@ -174,15 +174,6 @@
         <button onclick={setAnnotationColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
         <button onclick={setAnnotationColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
       </div>
-      <!-- <div>
-        <label for="markerAnnotationGlyphColor">Glyph Color</label>
-        <button onclick={setAnnotationGlyphColor('#044E54')} aria-label="CyanOne" class="annotation-input color-btn" style:background-color="#044E54"></button>
-        <button onclick={setAnnotationGlyphColor('#0A6C74')} aria-label="CyanTwo" class="annotation-input color-btn" style:background-color="#0A6C74"></button>
-        <button onclick={setAnnotationGlyphColor('#0E7C86')} aria-label="CyanThree" class="annotation-input color-btn" style:background-color="#0E7C86"></button>
-        <button onclick={setAnnotationGlyphColor('#14919B')} aria-label="CyanFour" class="annotation-input color-btn" style:background-color="#14919B"></button>
-        <button onclick={setAnnotationGlyphColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
-        <button onclick={setAnnotationGlyphColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
-      </div> -->
     </aside>
     <aside class="option-section">
       <div>
@@ -199,7 +190,7 @@
     <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
     <button class="custom-btn" onclick={addAnnotation}>Add Marker Annotation</button>
   </div>
-  <button class="custom-btn" onclick={addRandomAnnotation}>Random Annotation</button>
+  <button class="custom-btn" onclick={addRandomAnnotation} disabled={addedIndexes.length === randomAnnotations.length}>Random Annotation</button>
 </div>
 
 <style>
@@ -223,6 +214,11 @@
     width: fit-content;
     margin-top: 10px;
     text-transform: uppercase;
+  }
+  .custom-btn:disabled {
+    cursor: not-allowed;
+    color: var(--gray-two);
+    opacity: 0.5;
   }
   .section-wrapper {
     display: flex;
