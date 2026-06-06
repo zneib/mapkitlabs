@@ -86,6 +86,7 @@
     --gray-nine: #E4E7EB;
     --gray-ten: #F5F7FA;
     --blue-ten: #486581;
+    --white: #ffffff;
   }
   :global(body) {
     margin: 0px;
@@ -105,7 +106,7 @@
     bottom: 50px;
     left: 10px;
     z-index: 1;
-    background: var(--gray-nine);
+    background: var(--white);
     border: 2px solid var(--blue-ten);
     border-radius: 5px;
     padding: 5px 10px;

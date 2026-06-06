@@ -45,6 +45,7 @@
     top: 10px;
     left: 10px;
     z-index: 1;
+    background: var(--white);
     border: 2px solid var(--blue-ten);
     border-radius: 5px;
     padding: 5px 10px;
