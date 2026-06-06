@@ -74,7 +74,7 @@
 
 </script>
 
-<MenuButton target="circle-overlay-popover" topValue="210px" text="Circle Overlay" />
+<MenuButton target="circle-overlay-popover" topValue="160px" text="Circle Overlay" />
 <div popover id="circle-overlay-popover" class="popover">
   <div class="top-row">
     <h2>Overlay Properties</h2>

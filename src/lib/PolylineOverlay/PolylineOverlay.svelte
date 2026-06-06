@@ -73,7 +73,7 @@
 
 </script>
 
-<MenuButton target="polyline-overlay-popover" topValue="310px" text="Polyline Overlay" />
+<MenuButton target="polyline-overlay-popover" topValue="260px" text="Polyline Overlay" />
 <div popover id="polyline-overlay-popover" class="popover">
   <div class="top-row">
     <h2>Overlay Properties</h2>

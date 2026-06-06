@@ -86,7 +86,7 @@
 
 </script>
 
-<MenuButton target="polygon-overlay-popover" topValue="260px" text="Polygon Overlay" />
+<MenuButton target="polygon-overlay-popover" topValue="210px" text="Polygon Overlay" />
 <div popover id="polygon-overlay-popover" class="popover">
   <div class="top-row">
     <h2>Overlay Properties</h2>

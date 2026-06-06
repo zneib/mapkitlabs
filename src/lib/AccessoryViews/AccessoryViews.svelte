@@ -39,7 +39,7 @@
   }
 </script>
 
-<button class="menu-btn" onclick={addAccessoryView} style:top="160px">
+<button class="menu-btn" onclick={addAccessoryView} style:top="110px">
   <img src={accessory} alt="accessory" />
   <span>Accessory View</span>
 </button>

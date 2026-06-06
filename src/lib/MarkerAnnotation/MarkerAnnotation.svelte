@@ -126,7 +126,7 @@
   $inspect(addedIndexes.size === randomAnnotations.length)
 </script>
 
-<MenuButton target="custom-popover" topValue="60px" text="Marker Annotation" />
+<MenuButton target="custom-popover" topValue="10px" text="Marker Annotation" />
 <div popover id="custom-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>

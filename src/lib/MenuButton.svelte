@@ -16,7 +16,7 @@
     case 'Image Annotation':
       iconSrc = image;
       break;
-    case 'Accessory Annotation':
+    case 'Accessory View':
       iconSrc = accessory;
       break;
     case 'Circle Overlay':

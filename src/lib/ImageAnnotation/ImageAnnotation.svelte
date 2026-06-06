@@ -58,7 +58,7 @@
   }
 </script>
 
-<MenuButton target="image-annotation-popover" topValue="110px" text="Image Annotation" />
+<MenuButton target="image-annotation-popover" topValue="60px" text="Image Annotation" />
 <div popover id="image-annotation-popover" class="popover">
   <div class="top-row">
     <h2>Annotation Properties</h2>
