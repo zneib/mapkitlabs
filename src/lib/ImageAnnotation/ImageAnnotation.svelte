@@ -139,7 +139,7 @@
   }
   .popover:popover-open {
     position: absolute;
-    top: 150px;
+    top: 100px;
     left: 10px;
     margin: 0;
     border-radius: 4px;

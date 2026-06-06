@@ -164,7 +164,7 @@
   }
   .popover:popover-open {
     position: absolute;
-    top: 350px;
+    top: 300px;
     left: 10px;
     margin: 0;
     border-radius: 4px;
