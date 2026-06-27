@@ -1,8 +1,8 @@
 <script>
   let { map, mapkitGlobal } = $props();
-  import image from '$lib/icons/image.svg'
+  // import image from '$lib/icons/image.svg'
   import arches from '$lib/ImageAnnotation/arches.jpg'
-  import arches2x from '$lib/ImageAnnotation/arches2x.jpg'
+  // import arches2x from '$lib/ImageAnnotation/arches2x.jpg'
   import MenuButton from '$lib/MenuButton.svelte';
 
   let annotationAdded = $state(false);
@@ -101,7 +101,7 @@
   </div>
   <div class="button-row">
     <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
-    <button class="custom-btn" onclick={annotationAdded ? removeCustomMarkerAnnotation : addAnnotation}>Toggle Custom Annotation</button>
+    <button class="custom-btn" onclick={annotationAdded ? removeCustomImageAnnotation : addImageAnnotation}>Toggle Custom Annotation</button>
   </div>
 </div>
 
