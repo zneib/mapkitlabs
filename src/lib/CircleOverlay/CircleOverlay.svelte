@@ -1,6 +1,6 @@
 <script>
   let { map, mapkitGlobal } = $props();
-  import circleOverlay from '$lib/icons/circleOverlay.svg'
+  // import circleOverlay from '$lib/icons/circleOverlay.svg'
 	import MenuButton from '$lib/MenuButton.svelte';
 
   let circleOverlayAdded = $state(false);
@@ -9,7 +9,7 @@
   let overlayFillOpacity = $state(0.1);
   let overlayFillRule = $state("nonzero");
   let overlayLineCap = $state("round");
-  let overlayLineDash = $state("");
+  // let overlayLineDash = $state("");
   let overlayLineDashOffset = $state(0);
   let overlayLineJoin = $state("round");
   let overlayLineWidth = $state(1);
@@ -24,7 +24,7 @@
         { name: "San Jose", coordinate: [37.333333, -121.9], population: 1000536 }, 
       ];
 
-      const style = new mapkit.Style({
+      const style = new mapkitGlobal.Style({
           strokeColor: overlayStrokeColor,
           strokeOpacity: overlayStrokeOpacity,
           lineWidth: overlayLineWidth,
@@ -39,9 +39,9 @@
       });
 
       const circles = stats.map(function(stat) {
-        const coordinate = new mapkit.Coordinate(stat.coordinate[0], stat.coordinate[1]),
+        const coordinate = new mapkitGlobal.Coordinate(stat.coordinate[0], stat.coordinate[1]),
             radius = stat.population / 85, // The radius is in meters.
-            circle = new mapkit.CircleOverlay(coordinate, radius);
+            circle = new mapkitGlobal.CircleOverlay(coordinate, radius);
         circle.data = { population: stat.population };
         circle.style = style;
         return circle;
