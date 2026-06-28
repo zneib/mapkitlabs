@@ -121,9 +121,6 @@
       onannotationadded?.();
     }
   }
-  $inspect(randomAnnotations.length)
-  $inspect(addedIndexes)
-  $inspect(addedIndexes.size === randomAnnotations.length)
 </script>
 
 <MenuButton target="custom-popover" topValue="10px" text="Marker Annotation" />
