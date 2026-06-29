@@ -26,7 +26,7 @@
   onMount(async () => {
     const { load } = await import('@apple/mapkit-loader');
     const mapkit = await load({
-      token: PUBLIC_MAP_TOKEN,
+      token: `${PUBLIC_MAP_TOKEN}`,
       language: "en-US",
       libraries: ["services", "full-map", "geojson"],
     });
