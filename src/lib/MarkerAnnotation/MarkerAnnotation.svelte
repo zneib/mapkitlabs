@@ -86,7 +86,7 @@
   }
   function removeAllAnnotations() {
     if (map && mapkitGlobal) {
-      map.removeAnnotations(map._impl._annotationsController._items);
+      map.removeAnnotations(map.annotations);
       annotationAdded = false;
       annotationsCount = 0;
       addedIndexes = [];
