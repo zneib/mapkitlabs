@@ -8,12 +8,12 @@
   import { onMount } from 'svelte';
   import marker from '$lib/icons/marker.svg'
   import accessory from '$lib/icons/accessory.svg'
-  import ImageAnnotation from '$lib/ImageAnnotation/ImageAnnotation.svelte';
-	import AccessoryViews from '$lib/AccessoryViews/AccessoryViews.svelte';
 	import MarkerAnnotation from '$lib/MarkerAnnotation/MarkerAnnotation.svelte';
-  import CircleOverlay from '$lib/CircleOverlay/CircleOverlay.svelte';
-  import PolygonOverlay from '$lib/PolygonOverlay/PolygonOverlay.svelte';
-  import PolylineOverlay from '$lib/PolylineOverlay/PolylineOverlay.svelte';
+  // import ImageAnnotation from '$lib/ImageAnnotation/ImageAnnotation.svelte';
+	// import AccessoryViews from '$lib/AccessoryViews/AccessoryViews.svelte';
+  // import CircleOverlay from '$lib/CircleOverlay/CircleOverlay.svelte';
+  // import PolygonOverlay from '$lib/PolygonOverlay/PolygonOverlay.svelte';
+  // import PolylineOverlay from '$lib/PolylineOverlay/PolylineOverlay.svelte';
 
   // Global variables to hold the map and mapkit objects
   let map = $state({});
@@ -58,11 +58,11 @@
 
 <div id="mapContainer">
   <MarkerAnnotation map={map} mapkitGlobal={mapkitGlobal} bind:annotationsCount />
-  <ImageAnnotation map={map} mapkitGlobal={mapkitGlobal} />
-  <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} />
-  <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} />
-  <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} />
-  <PolylineOverlay map={map} mapkitGlobal={mapkitGlobal} />
+  <!-- <ImageAnnotation map={map} mapkitGlobal={mapkitGlobal} /> -->
+  <!-- <AccessoryViews map={map} mapkitGlobal={mapkitGlobal} /> -->
+  <!-- <CircleOverlay map={map} mapkitGlobal={mapkitGlobal} /> -->
+  <!-- <PolygonOverlay map={map} mapkitGlobal={mapkitGlobal} /> -->
+  <!-- <PolylineOverlay map={map} mapkitGlobal={mapkitGlobal} /> -->
   <div class="menu-btn">
     <p>Zoom Level: {currentZoomLevel}</p>
     <p>Map Center: {currentMapCenter.lat.toFixed(4)}, {currentMapCenter.lng.toFixed(4)}</p>
