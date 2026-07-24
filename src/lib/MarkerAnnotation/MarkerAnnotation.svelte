@@ -12,6 +12,7 @@
   let markerAnnotationGlyphColor = ('white');
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
+  let customAnnotationId = $state(null); // id of the most recently added custom annotation
 
   let addedIndexes = $state([]); // To track which random annotations have been added
 
@@ -41,32 +42,41 @@
 
   function addAnnotation() {
     if (map && mapkitGlobal) {
+      customAnnotationId = crypto.randomUUID();
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
         title: markerAnnotationTitle,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
         glyphColor: markerAnnotationGlyphColor,
         selected: markerAnnotationSelected,
-        draggable: markerAnnotationDraggable
+        draggable: markerAnnotationDraggable,
+        data: { id: customAnnotationId, source: 'custom' }
       });
       map.addAnnotation(annotation);
 
-      // Remove previous listener before adding a new one
-      // annotation.removeEventListener("select", onAnnotationSelect);
       annotation.addEventListener("select", onAnnotationSelect);
       annotationAdded = true;
       annotationsCount += 1;
       onannotationadded?.();
     }
   }
+  function removeAnnotation(id) {
+    if (map && mapkitGlobal) {
+      const annotation = map.annotations.find(annotation => annotation.data?.id === id);
+      if (annotation) {
+        map.removeAnnotation(annotation);
+        annotationsCount -= 1;
+      }
+    }
+  }
   function onAnnotationSelect(event) {
     const annotation = event.target;
     map.setCenterAnimated(annotation.coordinate, true);
-    // console.log(annotation.title, annotation.coordinate);
   }
   function removeCustomMarkerAnnotation() {
-    if (map && mapkitGlobal) {
-      map.removeAnnotation(map.selectedAnnotation);
+    if (customAnnotationId) {
+      removeAnnotation(customAnnotationId);
+      customAnnotationId = null;
       annotationAdded = false;
     }
   }
@@ -112,7 +122,8 @@
         selected: randomAnnotationData.selected,
         draggable: randomAnnotationData.draggable,
         color: randomAnnotationData.color,
-        glyphColor: randomAnnotationData.glyphColor
+        glyphColor: randomAnnotationData.glyphColor,
+        data: { id: crypto.randomUUID(), source: 'random', index: randomIndex }
       });
       annotation.addEventListener("select", onAnnotationSelect);
       map.addAnnotation(annotation);
@@ -126,7 +137,7 @@
 <MenuButton target="custom-popover" topValue="10px" text="Marker Annotation" />
 <div popover id="custom-popover" class="popover">
   <div class="top-row">
-    <h2>Annotation Properties</h2>
+    <h2>Marker Annotation Properties</h2>
     <a class="code-link" href="https://gist.github.com/zneib/3034e5fe15fb8620a052cf95e60468f5" target="_blank" aria-label="Code Sample">
       <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
@@ -184,19 +195,49 @@
     </aside>
   </div>
   <div class="button-row">
-    <button class="custom-btn" onclick={removeAllAnnotations}>Remove All Annotations</button>
-    <button class="custom-btn" onclick={addAnnotation}>Add Marker Annotation</button>
+    <button class="custom-btn" onclick={addAnnotation}>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      </svg>
+      Add Custom Annotation
+    </button>
+    <button class="custom-btn" onclick={removeCustomMarkerAnnotation} disabled={!customAnnotationId}>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+      </svg>
+      Remove Custom Annotation
+    </button>
   </div>
-  <button class="custom-btn" onclick={addRandomAnnotation} disabled={addedIndexes.length === randomAnnotations.length}>Random Annotation</button>
+  <hr class="separator" />
+  <div class="button-row">
+    <button class="custom-btn" onclick={addRandomAnnotation} disabled={addedIndexes.length === randomAnnotations.length}>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+      </svg>
+      Add Random Annotation
+    </button>
+    <button class="custom-btn" style={'display: flex'} onclick={removeAllAnnotations}>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+      </svg>
+      Remove All Annotations
+    </button>
+  </div>
 </div>
 
 <style>
   ::backdrop {
     background-color: rgba(0, 0, 0, 0.3);
   }
+  .separator {
+    width: 100%;
+    border-top: 1px solid var(--gray-ten);
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
   .button-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     gap: 15px;
     width: 100%;
     margin-top: 10px;
@@ -210,7 +251,13 @@
     cursor: pointer;
     width: fit-content;
     margin-top: 10px;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    & > svg {
+      width: 15px;
+      height: 15px;
+      margin-right: 2px;
+    }
   }
   .custom-btn:disabled {
     cursor: not-allowed;
