@@ -7,6 +7,7 @@
   let markerAnnotationLat = $state(37.334883);
   let markerAnnotationLng = $state(-122.008977);
   let markerAnnotationTitle = $state('');
+  let markerAnnotationAccessibilityLabel = $state('')
   let markerAnnotationSubtitle = $state('');
   let markerAnnotationColor = ('#30b567');
   let markerAnnotationGlyphColor = ('white');
@@ -45,6 +46,7 @@
       customAnnotationId = crypto.randomUUID();
       const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
         title: markerAnnotationTitle,
+        accessibilityLabel: markerAnnotationAccessibilityLabel,
         subtitle: markerAnnotationSubtitle,
         color: markerAnnotationColor,
         glyphColor: markerAnnotationGlyphColor,
@@ -170,6 +172,12 @@
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/subtitle" target="_blank">Subtitle</a>
         </label>
         <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationAccessibilityLabel">
+          <a href="https://developer.apple.com/documentation/mapkitjs/annotation/accessibilitylabel" target="_blank">Accessibility Label</a>
+        </label>
+        <input bind:value={markerAnnotationAccessibilityLabel} class="annotation-input" type="text" name="markerAnnotationAccessibilityLabel" id="markerAnnotationAccessibilityLabel" placeholder="Enter a label for a11y" onblur={resetAnnotationWithNewData} />
       </div>
       <div>
         <label for="markerAnnotationColor">
