@@ -13,6 +13,7 @@
   let markerAnnotationGlyphColor = ('white');
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
+  let markerAnnotationAnimates = $state(true);
   let customAnnotationId = $state(null); // id of the most recently added custom annotation
 
   let addedIndexes = $state([]); // To track which random annotations have been added
@@ -52,6 +53,7 @@
         glyphColor: markerAnnotationGlyphColor,
         selected: markerAnnotationSelected,
         draggable: markerAnnotationDraggable,
+        animates: markerAnnotationAnimates,
         data: { id: customAnnotationId, source: 'custom' }
       });
       map.addAnnotation(annotation);
@@ -199,6 +201,12 @@
       <div>
         <label for="markerAnnotationDraggable">Draggable</label>
         <input bind:checked={markerAnnotationDraggable} class="annotation-input-small" type="checkbox" name="markerAnnotationDraggable" id="markerAnnotationDraggable" onchange={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationAnimates">
+          <a href="https://developer.apple.com/documentation/mapkitjs/annotation/animates" target="_blank">Animates</a>
+        </label>
+        <input bind:checked={markerAnnotationAnimates} class="annotation-input-small" type="checkbox" name="markerAnnotationAnimates" id="markerAnnotationAnimates" onchange={resetAnnotationWithNewData} />
       </div>
     </aside>
   </div>
