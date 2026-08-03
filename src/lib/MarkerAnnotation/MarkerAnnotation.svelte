@@ -9,8 +9,8 @@
   let markerAnnotationTitle = $state('');
   let markerAnnotationAccessibilityLabel = $state('')
   let markerAnnotationSubtitle = $state('');
-  let markerAnnotationColor = ('#30b567');
-  let markerAnnotationGlyphColor = ('white');
+  let markerAnnotationColor = $state('#000000');
+  let markerAnnotationGlyphColor = $state('#ffffff');
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
   let markerAnnotationAnimates = $state(true);
@@ -185,14 +185,15 @@
       </div>
       <div>
         <label for="markerAnnotationColor">
-          <a href="https://developer.apple.com/documentation/mapkitjs/markerannotationconstructoroptions/color" target="_blank">Color</a>
+          <a href="https://developer.apple.com/documentation/mapkitjs/markerannotation/color" target="_blank">Color</a>
         </label>
-        <button onclick={setAnnotationColor('#044E54')} aria-label="CyanOne" class="annotation-input color-btn" style:background-color="#044E54"></button>
-        <button onclick={setAnnotationColor('#0A6C74')} aria-label="CyanTwo" class="annotation-input color-btn" style:background-color="#0A6C74"></button>
-        <button onclick={setAnnotationColor('#0E7C86')} aria-label="CyanThree" class="annotation-input color-btn" style:background-color="#0E7C86"></button>
-        <button onclick={setAnnotationColor('#14919B')} aria-label="CyanFour" class="annotation-input color-btn" style:background-color="#14919B"></button>
-        <button onclick={setAnnotationColor('#2CB1BC')} aria-label="CyanFive" class="annotation-input color-btn" style:background-color="#2CB1BC"></button>
-        <button onclick={setAnnotationColor('#38BEC9')} aria-label="CyanSix" class="annotation-input color-btn" style:background-color="#38BEC9"></button>
+        <input bind:value={markerAnnotationColor} class="annotation-input" type="color" name="markerAnnotationColor" id="markerAnnotationColor" />
+      </div>
+      <div>
+        <label for="markerAnnotationGlyphColor">
+          <a href="https://developer.apple.com/documentation/mapkitjs/markerannotation/glyphcolor" target="_blank">Glyph Color</a>
+        </label>
+        <input bind:value={markerAnnotationGlyphColor} class="annotation-input" type="color" name="markerAnnotationGlyphColor" id="markerAnnotationGlyphColor" />
       </div>
     </aside>
     <aside class="option-section">
