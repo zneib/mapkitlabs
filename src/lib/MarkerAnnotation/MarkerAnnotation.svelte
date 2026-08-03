@@ -14,6 +14,7 @@
   let markerAnnotationSelected = $state(false);
   let markerAnnotationDraggable = $state(true);
   let markerAnnotationAnimates = $state(true);
+  let markerAnnotationEnabled = $state(true);
   let customAnnotationId = $state(null); // id of the most recently added custom annotation
 
   let addedIndexes = $state([]); // To track which random annotations have been added
@@ -54,6 +55,7 @@
         selected: markerAnnotationSelected,
         draggable: markerAnnotationDraggable,
         animates: markerAnnotationAnimates,
+        enabled: markerAnnotationEnabled,
         data: { id: customAnnotationId, source: 'custom' }
       });
       map.addAnnotation(annotation);
@@ -207,6 +209,12 @@
           <a href="https://developer.apple.com/documentation/mapkitjs/annotation/animates" target="_blank">Animates</a>
         </label>
         <input bind:checked={markerAnnotationAnimates} class="annotation-input-small" type="checkbox" name="markerAnnotationAnimates" id="markerAnnotationAnimates" onchange={resetAnnotationWithNewData} />
+      </div>
+      <div>
+        <label for="markerAnnotationEnabled">
+          <a href="https://developer.apple.com/documentation/mapkitjs/annotation/enabled" target="_blank">Enabled</a>
+        </label>
+        <input bind:checked={markerAnnotationEnabled} class="annotation-input-small" type="checkbox" name="markerAnnotationEnabled" id="markerAnnotationEnabled" onchange={resetAnnotationWithNewData} />
       </div>
     </aside>
   </div>
