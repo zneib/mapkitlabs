@@ -86,20 +86,20 @@
       annotationAdded = false;
     }
   }
-  function resetAnnotationWithNewData() {
-    if (map && mapkitGlobal) {
-      map.removeAnnotations(map._impl._annotationsController._items); // Remove all annotations
-      // map.removeAnnotation(map.selectedAnnotation); // Only remove the selected annotation, which won't work if the annotation isn't selected
-      const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
-        title: markerAnnotationTitle,
-        subtitle: markerAnnotationSubtitle,
-        color: markerAnnotationColor,
-        selected: markerAnnotationSelected,
-        draggable: markerAnnotationDraggable
-      });
-      map.addAnnotation(annotation);
-    }
-  }
+  // function resetAnnotationWithNewData() { // I want to use this function later on to edit an already created marker annotation.
+  //   if (map && mapkitGlobal) {
+  //     map.removeAnnotations(map._impl._annotationsController._items); // Remove all annotations
+  //     // map.removeAnnotation(map.selectedAnnotation); // Only remove the selected annotation, which won't work if the annotation isn't selected
+  //     const annotation = new mapkitGlobal.MarkerAnnotation(new mapkitGlobal.Coordinate(markerAnnotationLat, markerAnnotationLng), {
+  //       title: markerAnnotationTitle,
+  //       subtitle: markerAnnotationSubtitle,
+  //       color: markerAnnotationColor,
+  //       selected: markerAnnotationSelected,
+  //       draggable: markerAnnotationDraggable
+  //     });
+  //     map.addAnnotation(annotation);
+  //   }
+  // }
   function removeAllAnnotations() {
     if (map && mapkitGlobal) {
       map.removeAnnotations(map.annotations);
@@ -157,31 +157,31 @@
         <label for="markerAnnotationLat">
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.coordinate/mapkit.coordinate" target="_blank">Latitude</a>
         </label>
-        <input bind:value={markerAnnotationLat} class="annotation-input" type="number" name="markerAnnotationLat" id="markerAnnotationLat" placeholder="Enter Latitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationLat} class="annotation-input" type="number" name="markerAnnotationLat" id="markerAnnotationLat" placeholder="Enter Latitude" oninput={resetAnnotationWithNewData} />
       </div>
       <div>
         <label for="markerAnnotationLng">
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.coordinate/mapkit.coordinate" target="_blank">Longitude</a>
         </label>
-        <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" oninput={resetAnnotationWithNewData} onblur={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" oninput={resetAnnotationWithNewData} />
       </div>
       <div>
         <label for="markerAnnotationTitle">
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/title" target="_blank">Title</a>
         </label>
-        <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a Title" onblur={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationTitle} class="annotation-input" type="text" name="markerAnnotationTitle" id="markerAnnotationTitle" placeholder="Enter a Title" />
       </div>
       <div>
         <label for="markerAnnotationSub">
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.annotation/subtitle" target="_blank">Subtitle</a>
         </label>
-        <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" onblur={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationSubtitle} class="annotation-input" type="text" name="markerAnnotationSubtitle" id="markerAnnotationSub" placeholder="Enter a Subtitle" />
       </div>
       <div>
         <label for="markerAnnotationAccessibilityLabel">
           <a href="https://developer.apple.com/documentation/mapkitjs/annotation/accessibilitylabel" target="_blank">Accessibility Label</a>
         </label>
-        <input bind:value={markerAnnotationAccessibilityLabel} class="annotation-input" type="text" name="markerAnnotationAccessibilityLabel" id="markerAnnotationAccessibilityLabel" placeholder="Enter a label for a11y" onblur={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationAccessibilityLabel} class="annotation-input" type="text" name="markerAnnotationAccessibilityLabel" id="markerAnnotationAccessibilityLabel" placeholder="Enter a label for a11y" />
       </div>
       <div>
         <label for="markerAnnotationColor">
@@ -199,23 +199,23 @@
     <aside class="option-section">
       <div>
         <label for="markerAnnotationSelected">Selected</label>
-        <input bind:checked={markerAnnotationSelected} class="annotation-input-small" type="checkbox" name="markerAnnotationSelected" id="markerAnnotationSelected" onchange={resetAnnotationWithNewData} />
+        <input bind:checked={markerAnnotationSelected} class="annotation-input-small" type="checkbox" name="markerAnnotationSelected" id="markerAnnotationSelected" />
       </div>
       <div>
         <label for="markerAnnotationDraggable">Draggable</label>
-        <input bind:checked={markerAnnotationDraggable} class="annotation-input-small" type="checkbox" name="markerAnnotationDraggable" id="markerAnnotationDraggable" onchange={resetAnnotationWithNewData} />
+        <input bind:checked={markerAnnotationDraggable} class="annotation-input-small" type="checkbox" name="markerAnnotationDraggable" id="markerAnnotationDraggable" />
       </div>
       <div>
         <label for="markerAnnotationAnimates">
           <a href="https://developer.apple.com/documentation/mapkitjs/annotation/animates" target="_blank">Animates</a>
         </label>
-        <input bind:checked={markerAnnotationAnimates} class="annotation-input-small" type="checkbox" name="markerAnnotationAnimates" id="markerAnnotationAnimates" onchange={resetAnnotationWithNewData} />
+        <input bind:checked={markerAnnotationAnimates} class="annotation-input-small" type="checkbox" name="markerAnnotationAnimates" id="markerAnnotationAnimates" />
       </div>
       <div>
         <label for="markerAnnotationEnabled">
           <a href="https://developer.apple.com/documentation/mapkitjs/annotation/enabled" target="_blank">Enabled</a>
         </label>
-        <input bind:checked={markerAnnotationEnabled} class="annotation-input-small" type="checkbox" name="markerAnnotationEnabled" id="markerAnnotationEnabled" onchange={resetAnnotationWithNewData} />
+        <input bind:checked={markerAnnotationEnabled} class="annotation-input-small" type="checkbox" name="markerAnnotationEnabled" id="markerAnnotationEnabled" />
       </div>
     </aside>
   </div>
