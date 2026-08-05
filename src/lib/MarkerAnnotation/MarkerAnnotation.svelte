@@ -138,6 +138,24 @@
       onannotationadded?.();
     }
   }
+  function getLatLongOnClick(event) {
+    // MapKit gives us the tap position relative to the page, which the map can
+    // convert back into a geographic coordinate.
+    const coordinate = map.convertPointOnPageToCoordinate(
+      new DOMPoint(event.pointOnPage.x, event.pointOnPage.y)
+    );
+    console.log(coordinate)
+    markerAnnotationLat = Number(coordinate.latitude.toFixed(6));
+    markerAnnotationLng = Number(coordinate.longitude.toFixed(6));
+  }
+
+  // `map` starts out null and is set once MapKit loads, so wire the listener up
+  // reactively and tear it down if the map ever changes.
+  $effect(() => {
+    if (!map) return;
+    map.addEventListener('single-tap', getLatLongOnClick);
+    return () => map.removeEventListener('single-tap', getLatLongOnClick);
+  });
 </script>
 
 <MenuButton target="custom-popover" topValue="10px" text="Marker Annotation" />
@@ -157,13 +175,13 @@
         <label for="markerAnnotationLat">
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.coordinate/mapkit.coordinate" target="_blank">Latitude</a>
         </label>
-        <input bind:value={markerAnnotationLat} class="annotation-input" type="number" name="markerAnnotationLat" id="markerAnnotationLat" placeholder="Enter Latitude" oninput={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationLat} class="annotation-input" type="number" name="markerAnnotationLat" id="markerAnnotationLat" placeholder="Enter Latitude" />
       </div>
       <div>
         <label for="markerAnnotationLng">
           <a href="https://developer.apple.com/documentation/mapkitjs/mapkit.coordinate/mapkit.coordinate" target="_blank">Longitude</a>
         </label>
-        <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" oninput={resetAnnotationWithNewData} />
+        <input bind:value={markerAnnotationLng} class="annotation-input" type="number" name="markerAnnotationLng" id="markerAnnotationLng" placeholder="Enter Longitude" />
       </div>
       <div>
         <label for="markerAnnotationTitle">
